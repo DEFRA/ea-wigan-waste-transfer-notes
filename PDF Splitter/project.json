@@ -1,0 +1,70 @@
+{
+  "name": "PDF Splitter",
+  "projectId": "fc0a1991-1cec-4562-942e-35206119c74b",
+  "description": "Tool for the splitting of large WTN PDFs into smaller files",
+  "main": "Main.xaml",
+  "dependencies": {
+    "DRACOE.Microsoft.Graph": "[1.0.41]",
+    "IDP": "[1.0.9]",
+    "Logging": "[1.0.7]",
+    "Pop.Ups": "[1.0.3]",
+    "UiPath.Excel.Activities": "[2.24.4]",
+    "UiPath.Form.Activities": "[1.8.0]",
+    "UiPath.FormActivityLibrary": "[1.8.0]",
+    "UiPath.Mail.Activities": "[1.8.6]",
+    "UiPath.OCR.Activities": "[3.15.1]",
+    "UiPath.PDF.Activities": "[3.14.1]",
+    "UiPath.System.Activities": "[24.10.8]",
+    "UiPath.UIAutomation.Activities": "[20.4.2]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "22.4.6.0",
+  "projectVersion": "1.0.2",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "netFrameworkLazyLoading": false,
+    "isPausable": true,
+    "isAttended": false,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "workflowSerialization": "DataContract",
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false,
+    "mustRestoreAllDependencies": true,
+    "pipType": "ChildSession"
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [],
+    "modernBehavior": false,
+    "saveToCloud": false
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "7d9e4c66-ae04-45bc-b46f-193d6ef3b0bb",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {},
+  "targetFramework": "Legacy"
+}

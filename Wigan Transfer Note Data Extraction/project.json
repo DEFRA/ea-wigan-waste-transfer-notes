@@ -1,0 +1,93 @@
+{
+  "name": "Wigan Transfer Note Data Extraction",
+  "projectId": "7d762ce0-084b-40b4-b1d3-a04637882dbc",
+  "description": "Wigan Waste Site IDP",
+  "main": "Main.xaml",
+  "dependencies": {
+    "DRACOE.Microsoft.Graph": "[1.0.41]",
+    "IDP": "[1.0.17]",
+    "Logging": "[1.0.19]",
+    "Pop.Ups": "[1.0.3]",
+    "UiPath.DocumentUnderstanding.OCR.LocalServer": "[1.5.1]",
+    "UiPath.Excel.Activities": "[2.24.4]",
+    "UiPath.Form.Activities": "[1.8.0]",
+    "UiPath.FormActivityLibrary": "[1.8.0]",
+    "UiPath.IntelligentOCR.Activities": "[6.9.3]",
+    "UiPath.Mail.Activities": "[1.8.6]",
+    "UiPath.OCR.Activities": "[3.17.2]",
+    "UiPath.PDF.Activities": "[3.14.1]",
+    "UiPath.System.Activities": "[24.10.8]",
+    "UiPath.UIAutomation.Activities": "[23.10.11]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "23.10.6.0",
+  "projectVersion": "1.0.4",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "netFrameworkLazyLoading": false,
+    "isPausable": true,
+    "isAttended": false,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "workflowSerialization": "DataContract",
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false,
+    "mustRestoreAllDependencies": true,
+    "pipType": "ChildSession",
+    "robotVersion": "24.10.0"
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": [
+        "Test.xaml"
+      ]
+    },
+    "fileInfoCollection": [],
+    "modernBehavior": false,
+    "saveToCloud": false
+  },
+  "arguments": {
+    "input": [
+      {
+        "name": "IN_boolUnattended",
+        "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "required": false,
+        "hasDefault": false
+      }
+    ],
+    "output": []
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "443fdfb5-2eb8-4de7-bdc6-5d65edbcf7df",
+      "input": [
+        {
+          "name": "IN_boolUnattended",
+          "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "required": false,
+          "hasDefault": false
+        }
+      ],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {},
+  "targetFramework": "Legacy"
+}
