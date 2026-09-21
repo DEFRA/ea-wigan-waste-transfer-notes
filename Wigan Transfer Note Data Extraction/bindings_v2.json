@@ -1,0 +1,29 @@
+{
+  "version": "2.0",
+  "resources": [
+    {
+      "resource": "asset",
+      "value": {
+        "name": {
+          "defaultValue": "Current Minor Version",
+          "isExpression": false
+        }
+      },
+      "metadata": {}
+    },
+    {
+      "resource": "asset",
+      "value": {
+        "folderPath": {
+          "defaultValue": "Shared",
+          "isExpression": false
+        },
+        "name": {
+          "defaultValue": "Form Extractor Consumption Factor",
+          "isExpression": false
+        }
+      },
+      "metadata": {}
+    }
+  ]
+}
