@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1698,1103</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1698,1172</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="66">
@@ -652,7 +652,7 @@
                                                     <mva:VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, sma:PSCredential)" ExpressionText="Credentials" />
                                                   </OutArgument>
                                                   <InArgument x:TypeArguments="x:String" x:Key="in_OrchestratorFolders">
-                                                    <Literal x:TypeArguments="x:String">EA Root/Wigan WTN Data Extraction</Literal>
+                                                    <Literal x:TypeArguments="x:String">EA Root/Wigan Data Extraction</Literal>
                                                   </InArgument>
                                                   <InArgument x:TypeArguments="x:Boolean" x:Key="in_RetrieveCredentials">
                                                     <Literal x:TypeArguments="x:Boolean" Value="True" />

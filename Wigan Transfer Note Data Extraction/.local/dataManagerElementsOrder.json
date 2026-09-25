@@ -163,6 +163,7 @@
       "Path": "Process/Process Subflows/Process Form.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "dtSource&Sequence_4",
         "oSubDocument&Flowchart_1",
         "erExtractionResult&Flowchart_1",
         "dsDataSet&Flowchart_1",

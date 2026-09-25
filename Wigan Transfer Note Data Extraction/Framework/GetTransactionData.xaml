@@ -12,7 +12,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1698,5229</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1698,5220</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetTransactionData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="54">
@@ -128,7 +128,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Get a transaction item from a specified source (e.g., Orchestrator queues, spreadsheets, databases, mailboxes or web APIs). &#xA;&#xA;This framework is setup by default to look for an Outlook MailMessage from a config-specified mailbox, this should be changed on a work package basis with out_TransactionItem being set to a single transaction from whatever source is required.&#xA;&#xA;If there are no transaction items remaining, out_TransactionItem should be set to Nothing, which leads to the End Process state. &#xA;&#xA;out_boolLastTransaction should be set to True where it is possible to determine that a transaction is the last in the batch. If this is not possible to derive then changes will need to be made to the &quot;Final Transaction&quot; transition at the framework's parent level. " DisplayName="Get Transaction Data" sap:VirtualizedContainerService.HintSize="1488,5164" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Get a transaction item from a specified source (e.g., Orchestrator queues, spreadsheets, databases, mailboxes or web APIs). &#xA;&#xA;This framework is setup by default to look for an Outlook MailMessage from a config-specified mailbox, this should be changed on a work package basis with out_TransactionItem being set to a single transaction from whatever source is required.&#xA;&#xA;If there are no transaction items remaining, out_TransactionItem should be set to Nothing, which leads to the End Process state. &#xA;&#xA;out_boolLastTransaction should be set to True where it is possible to determine that a transaction is the last in the batch. If this is not possible to derive then changes will need to be made to the &quot;Final Transaction&quot; transition at the framework's parent level. " DisplayName="Get Transaction Data" sap:VirtualizedContainerService.HintSize="1488,5155" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="arrPDFFileList" />
       <Variable x:TypeArguments="ss:SecureString" Name="strBearerToken" />
@@ -140,24 +140,24 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If Condition="[String.IsNullOrWhiteSpace(io_Config(&quot;SPOL Bearer Token&quot;).ToString)]" DisplayName="First Run?" sap:VirtualizedContainerService.HintSize="1440,1902" sap2010:WorkflowViewState.IdRef="If_10">
+    <da:Get_Bearer_Token DisplayName="Get SPOL Bearer Token" sap:VirtualizedContainerService.HintSize="1440,239" sap2010:WorkflowViewState.IdRef="Get_Bearer_Token_1" in_strClientID="[(New System.Net.NetworkCredential(&quot;&quot;, io_Credentials(&quot;SPOL App Registration&quot;).UserName)).SecurePassword]" in_strClientSecret="[io_Credentials(&quot;SPOL App Registration&quot;).Password]" in_strTenantID="[(New System.Net.NetworkCredential(&quot;&quot;, io_Config(&quot;SPOL Tenant ID&quot;).ToString)).SecurePassword]" out_strBearerToken="[strBearerToken]" />
+    <Assign DisplayName="Assign Bearer Token to Config" sap:VirtualizedContainerService.HintSize="1440,81" sap2010:WorkflowViewState.IdRef="Assign_30">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Object">[io_Config("SPOL Bearer Token")]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Object">[strBearerToken]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <If Condition="[in_TransactionNumber = 1]" DisplayName="First Run?" sap:VirtualizedContainerService.HintSize="1440,1509" sap2010:WorkflowViewState.IdRef="If_10">
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="823,1713" sap2010:WorkflowViewState.IdRef="Sequence_11">
+        <Sequence sap:VirtualizedContainerService.HintSize="823,1321" sap2010:WorkflowViewState.IdRef="Sequence_11">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <da:Get_Bearer_Token DisplayName="Get SPOL Bearer Token" sap:VirtualizedContainerService.HintSize="775,239" sap2010:WorkflowViewState.IdRef="Get_Bearer_Token_1" in_strClientID="[(New System.Net.NetworkCredential(&quot;&quot;, io_Credentials(&quot;SPOL App Registration&quot;).UserName)).SecurePassword]" in_strClientSecret="[io_Credentials(&quot;SPOL App Registration&quot;).Password]" in_strTenantID="[(New System.Net.NetworkCredential(&quot;&quot;, io_Config(&quot;SPOL Tenant ID&quot;).ToString)).SecurePassword]" out_strBearerToken="[strBearerToken]" />
-          <Assign DisplayName="Assign Bearer Token to Config" sap:VirtualizedContainerService.HintSize="775,82" sap2010:WorkflowViewState.IdRef="Assign_30">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:Object">[io_Config("SPOL Bearer Token")]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:Object">[strBearerToken]</InArgument>
-            </Assign.Value>
-          </Assign>
-          <Sequence DisplayName="Select Folder to Process" sap:VirtualizedContainerService.HintSize="775,1234" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence DisplayName="Select Folder to Process" sap:VirtualizedContainerService.HintSize="775,1227" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <Sequence.Variables>
               <Variable x:TypeArguments="si:DirectoryInfo" Name="dirParentFolder" />
               <Variable x:TypeArguments="x:String" Name="strFormOutput" />
@@ -172,7 +172,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <ds:Get_Folder_Contents DisplayName="Get List of SPOL Spreadsheet Folders" sap:VirtualizedContainerService.HintSize="727,25" sap2010:WorkflowViewState.IdRef="Get_Folder_Contents_1" in_strBearerToken="[strBearerToken]" in_strFolderPath="[io_Config(&quot;SPOL Parent Folder&quot;).ToString]" in_strListID="[io_Config(&quot;SPOL List ID&quot;).ToString]" in_strSiteID="[io_Config(&quot;SPOL Site ID&quot;).ToString]" out_dtContents="[dtFolders]" />
-            <ufa:FormActivity CreateFormActivityFileName="{x:Null}" CreateFormActivityFilePath="{x:Null}" FormFieldsInputData="{x:Null}" IconPath="{x:Null}" TimeoutInSeconds="{x:Null}" WindowPositionLeft="{x:Null}" WindowPositionTop="{x:Null}" CreateFormId="df5dfef4-0aa4-4e3b-bfe0-aa2b77595120" DisableMaximizeButton="False" DisableMinimizeButton="False" DisableSanitize="False" Dismissed="[boolDis]" DisplayName="Present Folder Select Form" FormFieldsOutputData="[strFormOutput]" FormHeight="375" FormSchema="%[{&quot;label&quot;:&quot;HTML&quot;,&quot;attrs&quot;:[{&quot;attr&quot;:&quot;&quot;,&quot;value&quot;:&quot;&quot;}],&quot;content&quot;:&quot;&lt;h1&gt;Select  Folder&lt;/h1&gt;\n&lt;P&gt;Please select the  folder you would like to run the robot against:&lt;/P&gt;&quot;,&quot;refreshOnChange&quot;:true,&quot;key&quot;:&quot;html&quot;,&quot;type&quot;:&quot;htmlelement&quot;,&quot;input&quot;:false,&quot;tableView&quot;:false},{&quot;label&quot;:&quot;Folders&quot;,&quot;tableView&quot;:true,&quot;data&quot;:{&quot;values&quot;:[{&quot;label&quot;:&quot;&quot;,&quot;value&quot;:&quot;&quot;}]},&quot;validate&quot;:{&quot;onlyAvailableItems&quot;:false},&quot;key&quot;:&quot;listFolderNames&quot;,&quot;type&quot;:&quot;select&quot;,&quot;indexeddb&quot;:{&quot;filter&quot;:{}},&quot;input&quot;:true},{&quot;label&quot;:&quot;Container&quot;,&quot;customClass&quot;:&quot;box_continue&quot;,&quot;key&quot;:&quot;container1&quot;,&quot;type&quot;:&quot;container&quot;,&quot;input&quot;:true,&quot;tableView&quot;:false,&quot;components&quot;:[{&quot;label&quot;:&quot;Stop&quot;,&quot;theme&quot;:&quot;danger&quot;,&quot;leftIcon&quot;:&quot;fa fa-close&quot;,&quot;customClass&quot;:&quot;btn&quot;,&quot;tableView&quot;:false,&quot;key&quot;:&quot;no&quot;,&quot;custom&quot;:&quot;instance.emit('executeDoBlock', instance.component);&quot;,&quot;input&quot;:true,&quot;type&quot;:&quot;button&quot;,&quot;isResetData&quot;:false},{&quot;label&quot;:&quot;Continue&quot;,&quot;theme&quot;:&quot;success&quot;,&quot;leftIcon&quot;:&quot;fa fa-check&quot;,&quot;customClass&quot;:&quot;btn&quot;,&quot;tableView&quot;:false,&quot;key&quot;:&quot;continue&quot;,&quot;custom&quot;:&quot;instance.emit('executeDoBlock', instance.component);&quot;,&quot;input&quot;:true,&quot;type&quot;:&quot;button&quot;,&quot;isResetData&quot;:false}]}]" FormTheme="{}{&quot;Activities&quot;:[&quot;FORMS&quot;],&quot;Id&quot;:&quot;1642693326066&quot;,&quot;Name&quot;:&quot;Standard&quot;,&quot;BaseCss&quot;:&quot;../../assets/css/themes/uipath.bootstrap.min.css&quot;,&quot;ImageSrc&quot;:&quot;../../assets/themeicons/uipath.png&quot;,&quot;OverrideCssUrl&quot;:&quot;../../assets/css/themes/uipath.custom.css&quot;,&quot;UserStyleOverrides&quot;:&quot;body , h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {\n                      font-family : Calibri !important;\n                    }table, .btn, .form-control {\n                      font-size : 20px !important;\n                     }h1 {\n                      font-size : 42px !important;\n                    }h2 {\n                      font-size : 36px !important;\n                    }h3 {\n                      font-size : 30px !important;\n                    }h4 {\n                      font-size : 24px !important;\n                    }h5 {\n                      font-size : 20px !important;\n                    }h6 {\n                      font-size : 18px !important;\n                    }body {\n      background:  #ffffff !important;\n      font-size : 20px !important;\n      font-family : Calibri !important;\n      color : #000000 !important\n    } .panel-default {\n                        background:   !important;\n                        border-color :   !important;\n                      }\n                 .panel-default &gt; .panel-heading {\n                        background-color:  !important;\n                        color : #000000 !important\n                      }.btn-primary {\n                          background:  #ffffff !important;\n                          border-color:  #ffffff !important;\n                          color:  #000000 !important;\n                      } .btn-primary:hover {\n                          background:  #ffffff !important;\n                          color:  #000000 !important;\n                      } .btn-default {\n                        background:   !important;\n                        border-color:   !important;\n                        color:   !important;\n                      } .btn-default:hover {\n                        background:   !important;\n                        color:   !important;\n                      } &quot;,&quot;Properties&quot;:&quot;&quot;,&quot;IsCustomTheme&quot;:true,&quot;Version&quot;:1,&quot;ThemeVersion&quot;:1}" FormTitle="Department for Environment, Farming, and Rural Affairs" FormWidth="600" GenerateInputFields="False" sap:VirtualizedContainerService.HintSize="727,142" sap2010:WorkflowViewState.IdRef="FormActivity_1" IsReadOnly="False" LocalCSSFilePath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\FolderSelect.css&quot;]" MaxColumnsForSchemaGeneration="6" RunDoBlockFirst="False" RunInIsolatedMode="False" SelectedButton="[strSelectedButton]" StartAsMinimized="False">
+            <ufa:FormActivity CreateFormActivityFileName="{x:Null}" CreateFormActivityFilePath="{x:Null}" CreateFormId="df5dfef4-0aa4-4e3b-bfe0-aa2b77595120" DisableMaximizeButton="False" DisableMinimizeButton="False" DisableSanitize="False" Dismissed="[boolDis]" DisplayName="Present Folder Select Form" FormFieldsInputData="{x:Null}" FormFieldsOutputData="[strFormOutput]" FormHeight="375" FormSchema="%[{&quot;label&quot;:&quot;HTML&quot;,&quot;attrs&quot;:[{&quot;attr&quot;:&quot;&quot;,&quot;value&quot;:&quot;&quot;}],&quot;content&quot;:&quot;&lt;h1&gt;Select  Folder&lt;/h1&gt;\n&lt;P&gt;Please select the  folder you would like to run the robot against:&lt;/P&gt;&quot;,&quot;refreshOnChange&quot;:true,&quot;key&quot;:&quot;html&quot;,&quot;type&quot;:&quot;htmlelement&quot;,&quot;input&quot;:false,&quot;tableView&quot;:false},{&quot;label&quot;:&quot;Folders&quot;,&quot;tableView&quot;:true,&quot;data&quot;:{&quot;values&quot;:[{&quot;label&quot;:&quot;&quot;,&quot;value&quot;:&quot;&quot;}]},&quot;validate&quot;:{&quot;onlyAvailableItems&quot;:false},&quot;key&quot;:&quot;listFolderNames&quot;,&quot;type&quot;:&quot;select&quot;,&quot;indexeddb&quot;:{&quot;filter&quot;:{}},&quot;input&quot;:true},{&quot;label&quot;:&quot;Container&quot;,&quot;customClass&quot;:&quot;box_continue&quot;,&quot;key&quot;:&quot;container1&quot;,&quot;type&quot;:&quot;container&quot;,&quot;input&quot;:true,&quot;tableView&quot;:false,&quot;components&quot;:[{&quot;label&quot;:&quot;Stop&quot;,&quot;theme&quot;:&quot;danger&quot;,&quot;leftIcon&quot;:&quot;fa fa-close&quot;,&quot;customClass&quot;:&quot;btn&quot;,&quot;tableView&quot;:false,&quot;key&quot;:&quot;no&quot;,&quot;custom&quot;:&quot;instance.emit('executeDoBlock', instance.component);&quot;,&quot;input&quot;:true,&quot;type&quot;:&quot;button&quot;,&quot;isResetData&quot;:false},{&quot;label&quot;:&quot;Continue&quot;,&quot;theme&quot;:&quot;success&quot;,&quot;leftIcon&quot;:&quot;fa fa-check&quot;,&quot;customClass&quot;:&quot;btn&quot;,&quot;tableView&quot;:false,&quot;key&quot;:&quot;continue&quot;,&quot;custom&quot;:&quot;instance.emit('executeDoBlock', instance.component);&quot;,&quot;input&quot;:true,&quot;type&quot;:&quot;button&quot;,&quot;isResetData&quot;:false}]}]" FormTheme="{}{&quot;Activities&quot;:[&quot;FORMS&quot;],&quot;Id&quot;:&quot;1642693326066&quot;,&quot;Name&quot;:&quot;Standard&quot;,&quot;BaseCss&quot;:&quot;../../assets/css/themes/uipath.bootstrap.min.css&quot;,&quot;ImageSrc&quot;:&quot;../../assets/themeicons/uipath.png&quot;,&quot;OverrideCssUrl&quot;:&quot;../../assets/css/themes/uipath.custom.css&quot;,&quot;UserStyleOverrides&quot;:&quot;body , h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {\n                      font-family : Calibri !important;\n                    }table, .btn, .form-control {\n                      font-size : 20px !important;\n                     }h1 {\n                      font-size : 42px !important;\n                    }h2 {\n                      font-size : 36px !important;\n                    }h3 {\n                      font-size : 30px !important;\n                    }h4 {\n                      font-size : 24px !important;\n                    }h5 {\n                      font-size : 20px !important;\n                    }h6 {\n                      font-size : 18px !important;\n                    }body {\n      background:  #ffffff !important;\n      font-size : 20px !important;\n      font-family : Calibri !important;\n      color : #000000 !important\n    } .panel-default {\n                        background:   !important;\n                        border-color :   !important;\n                      }\n                 .panel-default &gt; .panel-heading {\n                        background-color:  !important;\n                        color : #000000 !important\n                      }.btn-primary {\n                          background:  #ffffff !important;\n                          border-color:  #ffffff !important;\n                          color:  #000000 !important;\n                      } .btn-primary:hover {\n                          background:  #ffffff !important;\n                          color:  #000000 !important;\n                      } .btn-default {\n                        background:   !important;\n                        border-color:   !important;\n                        color:   !important;\n                      } .btn-default:hover {\n                        background:   !important;\n                        color:   !important;\n                      } &quot;,&quot;Properties&quot;:&quot;&quot;,&quot;IsCustomTheme&quot;:true,&quot;Version&quot;:1,&quot;ThemeVersion&quot;:1}" FormTitle="Department for Environment, Farming, and Rural Affairs" FormWidth="600" GenerateInputFields="False" sap:VirtualizedContainerService.HintSize="727,142" IconPath="{x:Null}" sap2010:WorkflowViewState.IdRef="FormActivity_1" IsReadOnly="False" LocalCSSFilePath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\FolderSelect.css&quot;]" MaxColumnsForSchemaGeneration="6" RunDoBlockFirst="False" RunInIsolatedMode="False" SelectedButton="[strSelectedButton]" StartAsMinimized="False" TimeoutInSeconds="{x:Null}" WindowPositionLeft="{x:Null}" WindowPositionTop="{x:Null}">
               <ufa:FormActivity.Body>
                 <ActivityAction x:TypeArguments="scg:Dictionary(x:String, x:Object)" />
               </ufa:FormActivity.Body>
@@ -190,15 +190,15 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ufa:FormActivity>
-            <If Condition="[NOT(boolDis = True OR strSelectedButton = &quot;no&quot;)]" DisplayName="Robot Dismissed?" sap:VirtualizedContainerService.HintSize="727,336" sap2010:WorkflowViewState.IdRef="If_8">
+            <If Condition="[NOT(boolDis = True OR strSelectedButton = &quot;no&quot;)]" DisplayName="Robot Dismissed?" sap:VirtualizedContainerService.HintSize="727,334" sap2010:WorkflowViewState.IdRef="If_8">
               <If.Then>
-                <Sequence DisplayName="Assign Selected Folder Info" sap:VirtualizedContainerService.HintSize="482,176" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <Sequence DisplayName="Assign Selected Folder Info" sap:VirtualizedContainerService.HintSize="482,175" sap2010:WorkflowViewState.IdRef="Sequence_6">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign DisplayName="Deserealise Form Response" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_19">
+                  <Assign DisplayName="Deserealise Form Response" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_19">
                     <Assign.To>
                       <OutArgument x:TypeArguments="njl:JObject">[jobFormOutput]</OutArgument>
                     </Assign.To>
@@ -212,7 +212,7 @@
                 <Throw DisplayName="Throw BRE" Exception="[New BusinessRuleException(&quot;Spreadsheet folder selection closed by user!&quot;)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_1" />
               </If.Else>
             </If>
-            <Assign DisplayName="Assign &quot;To Process&quot; Folder" sap:VirtualizedContainerService.HintSize="727,82" sap2010:WorkflowViewState.IdRef="Assign_18">
+            <Assign DisplayName="Assign &quot;To Process&quot; Folder" sap:VirtualizedContainerService.HintSize="727,81" sap2010:WorkflowViewState.IdRef="Assign_18">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Object">[io_Config("To Process")]</OutArgument>
               </Assign.To>
@@ -220,7 +220,7 @@
                 <InArgument x:TypeArguments="x:Object">[io_Config("SPOL Parent Folder").ToString+jobFormOutput("listFolderNames").ToString.Replace(" ","%20").Replace("&amp;","%26")+"/2.%20To%20Process"]</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign DisplayName="Assign &quot;In Progress&quot; Folder" sap:VirtualizedContainerService.HintSize="727,82" sap2010:WorkflowViewState.IdRef="Assign_24">
+            <Assign DisplayName="Assign &quot;In Progress&quot; Folder" sap:VirtualizedContainerService.HintSize="727,81" sap2010:WorkflowViewState.IdRef="Assign_24">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Object">[io_Config("In Progress")]</OutArgument>
               </Assign.To>
@@ -228,7 +228,7 @@
                 <InArgument x:TypeArguments="x:Object">[io_Config("SPOL Parent Folder").ToString+jobFormOutput("listFolderNames").ToString.Replace(" ","%20").Replace("&amp;","%26")+"/3.%20In%20Progress"]</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign DisplayName="Assign &quot;Manual Review&quot; Folder" sap:VirtualizedContainerService.HintSize="727,82" sap2010:WorkflowViewState.IdRef="Assign_28">
+            <Assign DisplayName="Assign &quot;Manual Review&quot; Folder" sap:VirtualizedContainerService.HintSize="727,81" sap2010:WorkflowViewState.IdRef="Assign_28">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Object">[io_Config("Manual Review")]</OutArgument>
               </Assign.To>
@@ -236,7 +236,7 @@
                 <InArgument x:TypeArguments="x:Object">[io_Config("SPOL Parent Folder").ToString+jobFormOutput("listFolderNames").ToString.Replace(" ","%20").Replace("&amp;","%26")+"/4.%20Manual%20Review"]</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign DisplayName="Assign &quot;Completed&quot; Folder" sap:VirtualizedContainerService.HintSize="727,82" sap2010:WorkflowViewState.IdRef="Assign_29">
+            <Assign DisplayName="Assign &quot;Completed&quot; Folder" sap:VirtualizedContainerService.HintSize="727,81" sap2010:WorkflowViewState.IdRef="Assign_29">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Object">[io_Config("Completed")]</OutArgument>
               </Assign.To>
@@ -244,7 +244,7 @@
                 <InArgument x:TypeArguments="x:Object">[io_Config("SPOL Parent Folder").ToString+jobFormOutput("listFolderNames").ToString.Replace(" ","%20").Replace("&amp;","%26")+"/5.%20Completed"]</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign DisplayName="Assign &quot;Results&quot; Folder" sap:VirtualizedContainerService.HintSize="727,82" sap2010:WorkflowViewState.IdRef="Assign_26">
+            <Assign DisplayName="Assign &quot;Results&quot; Folder" sap:VirtualizedContainerService.HintSize="727,81" sap2010:WorkflowViewState.IdRef="Assign_26">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Object">[io_Config("Results")]</OutArgument>
               </Assign.To>
@@ -291,7 +291,7 @@
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[New Dictionary(Of String, String)]</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtFiles]" DisplayName="For Each File" sap:VirtualizedContainerService.HintSize="600,721" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtFiles]" DisplayName="For Each File" sap:VirtualizedContainerService.HintSize="600,721" sap2010:WorkflowViewState.IdRef="ForEachRow_1" MaxIterations="{x:Null}" Values="{x:Null}">
         <ui:ForEachRow.Body>
           <ActivityAction x:TypeArguments="sd:DataRow">
             <ActivityAction.Argument>
@@ -385,7 +385,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <p:Generic_PopUp OUT_ProcessType="{x:Null}" OUT_strButtonSelected="{x:Null}" DisplayName="Single Mode Form" sap:VirtualizedContainerService.HintSize="200,25" IN_CSS_filepath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\ProcessAnotherForm.css&quot;]" IN_ErrorMessage="The stop button was pressed" IN_PopupMessage="&lt;h1&gt;Continue processing?&lt;/h1&gt;&lt;P&gt;The robot has completed processing the previous case. Click Continue to process more cases.&lt;/P&gt;&lt;BR&gt;" IN_PopupTitle="Department for Environment, Food and Rural Affairs" IN_WidthHeight="[{500,275}]" sap2010:WorkflowViewState.IdRef="Generic_PopUp_5" />
+              <p:Generic_PopUp DisplayName="Single Mode Form" sap:VirtualizedContainerService.HintSize="200,25" IN_CSS_filepath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\ProcessAnotherForm.css&quot;]" IN_ErrorMessage="The stop button was pressed" IN_PopupMessage="&lt;h1&gt;Continue processing?&lt;/h1&gt;&lt;P&gt;The robot has completed processing the previous case. Click Continue to process more cases.&lt;/P&gt;&lt;BR&gt;" IN_PopupTitle="Department for Environment, Food and Rural Affairs" IN_WidthHeight="[{500,275}]" sap2010:WorkflowViewState.IdRef="Generic_PopUp_5" OUT_ProcessType="{x:Null}" OUT_strButtonSelected="{x:Null}" />
             </If.Then>
           </If>
           <Assign DisplayName="Assign Next Transaction" sap:VirtualizedContainerService.HintSize="913,82" sap2010:WorkflowViewState.IdRef="Assign_12">
@@ -404,7 +404,7 @@
               <InArgument x:TypeArguments="x:Object">[String.Format(io_Config("Local Processing Folder").ToString, io_Config("Username").ToString)+"/"+out_TransactionItem]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:ForEachFileX DisplayName="Clear Processing Folder" Folder="[io_Config(&quot;Local Processing Folder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="913,432" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
+          <ui:ForEachFileX DisplayName="Clear Processing Folder" Filter="{x:Null}" Folder="[io_Config(&quot;Local Processing Folder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="913,432" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
             <ui:ForEachFileX.Body>
               <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
                 <ActivityAction.Argument1>
