@@ -185,7 +185,7 @@
           <av:PointCollection x:Key="ConnectorLocation">470,254.5 470,304.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Digitise &amp; Classify" sap:VirtualizedContainerService.HintSize="200,67" sap2010:WorkflowViewState.IdRef="Sequence_1">
+      <Sequence DisplayName="Digitise &amp; Classify" sap:VirtualizedContainerService.HintSize="580,3464" sap2010:WorkflowViewState.IdRef="Sequence_1">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:String" Name="strFilename" />
         </Sequence.Variables>
@@ -335,42 +335,42 @@
               <p2:IntelligentKeywordClassifier LearningData="{x:Null}" TimeoutMs="{x:Null}" ApiKey="[strAPIKey]" DisplayName="Intelligent Keyword Classifier" Endpoint="https://du.uipath.com/svc/intelligentkeywords" sap:VirtualizedContainerService.HintSize="368,210" sap2010:WorkflowViewState.IdRef="IntelligentKeywordClassifier_2" LearningFilePath="DocumentProcessing\classifier-keywords.json" PerformDocumentSplitting="True" PersistenceId="UIa7b7c46eeb2543e6a0a5001241ee5865" SendDocumentsForAlgorithmImprovements="True" UsePageNumbers="False">
                 <p2:IntelligentKeywordClassifier.ClassifierResult>
                   <OutArgument x:TypeArguments="p3:ClassifierResult">
-                    <DelegateArgumentReference x:TypeArguments="p3:ClassifierResult">
+                    <DelegateArgumentReference x:TypeArguments="p3:ClassifierResult" sap2010:WorkflowViewState.IdRef="DelegateArgumentReference`1_1">
                       <DelegateOutArgument x:TypeArguments="p3:ClassifierResult" Name="ClassifierResult" />
                     </DelegateArgumentReference>
                   </OutArgument>
                 </p2:IntelligentKeywordClassifier.ClassifierResult>
                 <p2:IntelligentKeywordClassifier.DocumentObjectModel>
                   <InArgument x:TypeArguments="p4:Document">
-                    <DelegateArgumentValue x:TypeArguments="p4:Document">
+                    <DelegateArgumentValue x:TypeArguments="p4:Document" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_3">
                       <DelegateInArgument x:TypeArguments="p4:Document" Name="DocumentObjectModel" />
                     </DelegateArgumentValue>
                   </InArgument>
                 </p2:IntelligentKeywordClassifier.DocumentObjectModel>
                 <p2:IntelligentKeywordClassifier.DocumentPath>
                   <InArgument x:TypeArguments="x:String">
-                    <DelegateArgumentValue x:TypeArguments="x:String">
+                    <DelegateArgumentValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_4">
                       <DelegateInArgument x:TypeArguments="x:String" Name="DocumentPath" />
                     </DelegateArgumentValue>
                   </InArgument>
                 </p2:IntelligentKeywordClassifier.DocumentPath>
                 <p2:IntelligentKeywordClassifier.DocumentText>
                   <InArgument x:TypeArguments="x:String">
-                    <DelegateArgumentValue x:TypeArguments="x:String">
+                    <DelegateArgumentValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_2">
                       <DelegateInArgument x:TypeArguments="x:String" Name="DocumentText" />
                     </DelegateArgumentValue>
                   </InArgument>
                 </p2:IntelligentKeywordClassifier.DocumentText>
                 <p2:IntelligentKeywordClassifier.DocumentTypes>
                   <InArgument x:TypeArguments="p3:ClassifierDocumentType[]">
-                    <DelegateArgumentValue x:TypeArguments="p3:ClassifierDocumentType[]">
+                    <DelegateArgumentValue x:TypeArguments="p3:ClassifierDocumentType[]" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_6">
                       <DelegateInArgument x:TypeArguments="p3:ClassifierDocumentType[]" Name="DocumentTypes" />
                     </DelegateArgumentValue>
                   </InArgument>
                 </p2:IntelligentKeywordClassifier.DocumentTypes>
                 <p2:IntelligentKeywordClassifier.PredictionId>
                   <InArgument x:TypeArguments="x:String">
-                    <DelegateArgumentValue x:TypeArguments="x:String">
+                    <DelegateArgumentValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_5">
                       <DelegateInArgument x:TypeArguments="x:String" Name="PredictionId" />
                     </DelegateArgumentValue>
                   </InArgument>
@@ -396,7 +396,7 @@
               <InArgument x:TypeArguments="x:String">[(New System.Net.NetworkCredential("", in_Credentials("IDP API Credentials").Password)).Password]</InArgument>
             </Assign.Value>
           </Assign>
-          <p2:ClassifyDocumentScope ClassificationResults="[classResults]" DisplayName="Classify Document Scope" DocumentObjectModel="[oDocument]" DocumentPath="[io_Config(&quot;Local Filepath&quot;).ToString]" DocumentText="[strText]" sap:VirtualizedContainerService.HintSize="478,436" sap2010:WorkflowViewState.IdRef="ClassifyDocumentScope_1" Taxonomy="[oTaxonomy]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{&quot;UI4d2efc7c0e6d47e885938ebb983225a6&quot;:{&quot;DocumentTypeMappings&quot;:{&quot;WasteTransferNote.NoCategory.JDickinson&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;WasteTransferNote.NoCategory.JDickinson&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true},&quot;WasteTransferNote.NoCategory.NCDOwnNotes&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;WasteTransferNote.NoCategory.NCDOwnNotes&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true},&quot;WasteTransferNote.NoCategory.NCDDutyOfCare&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;WasteTransferNote.NoCategory.NCDDutyOfCare&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true},&quot;WasteTransferNote.NoCategory.GlobalMetalRecycling&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;WasteTransferNote.NoCategory.GlobalMetalRecycling&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true},&quot;WasteTransferNote.NoCategory.KennysSimplified&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;WasteTransferNote.NoCategory.KennysSimplified&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true}}}},&quot;ClassifierMinimumConfidence&quot;:{&quot;UI4d2efc7c0e6d47e885938ebb983225a6&quot;:&quot;10&quot;},&quot;DocumentTypesByPersistenceId&quot;:{&quot;UI4d2efc7c0e6d47e885938ebb983225a6&quot;:[]}}">
+          <p2:ClassifyDocumentScope ClassificationResults="[classResults]" DisplayName="Classify Document Scope" DocumentObjectModel="[oDocument]" DocumentPath="[io_Config(&quot;Local Filepath&quot;).ToString]" DocumentText="[strText]" sap:VirtualizedContainerService.HintSize="478,436" sap2010:WorkflowViewState.IdRef="ClassifyDocumentScope_1" Taxonomy="[oTaxonomy]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{&quot;UI4d2efc7c0e6d47e885938ebb983225a6&quot;:{&quot;DocumentTypeMappings&quot;:{&quot;WasteTransferNote.NoCategory.JDickinson&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;WasteTransferNote.NoCategory.JDickinson&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true},&quot;WasteTransferNote.NoCategory.NCDOwnNotes&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;WasteTransferNote.NoCategory.NCDOwnNotes&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true},&quot;WasteTransferNote.NoCategory.NCDDutyOfCare&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;WasteTransferNote.NoCategory.NCDDutyOfCare&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true},&quot;WasteTransferNote.NoCategory.KennysSimplified&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;WasteTransferNote.NoCategory.KennysSimplified&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true}}}},&quot;ClassifierMinimumConfidence&quot;:{&quot;UI4d2efc7c0e6d47e885938ebb983225a6&quot;:&quot;10&quot;},&quot;DocumentTypesByPersistenceId&quot;:{&quot;UI4d2efc7c0e6d47e885938ebb983225a6&quot;:[]}}">
             <p2:ClassifyDocumentScope.Classifiers>
               <p2:KeywordBasedClassifier HumanValidatedData="{x:Null}" LearningData="{x:Null}" DisplayName="Keyword Classifier" sap:VirtualizedContainerService.HintSize="234,114" sap2010:WorkflowViewState.IdRef="KeywordBasedClassifier_1" LearningFilePath="Assets\Keyword Training Files\KeywordTraining.json" PersistenceId="UI4d2efc7c0e6d47e885938ebb983225a6">
                 <p2:KeywordBasedClassifier.ClassifierResult>
@@ -858,7 +858,7 @@
           <av:Size x:Key="ShapeSize">200,259</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Flowchart sap2010:Annotation.AnnotationText="DEPRECATED&#xD;&#xA;&#xD;&#xA;The Intelligent Keyword Classifier can incorrectly classify WTNs that are similar to those in scope, but from different companies. Therefore, apply a secondary layer of filtering using key text phrases that are present on in scope WTNSs.&#xD;&#xA;&#xD;&#xA;" DisplayName="Filter Out Incorrect Classification" sap:VirtualizedContainerService.HintSize="200,259" sap2010:WorkflowViewState.IdRef="Flowchart_3">
+      <Flowchart sap2010:Annotation.AnnotationText="DEPRECATED&#xA;&#xA;The Intelligent Keyword Classifier can incorrectly classify WTNs that are similar to those in scope, but from different companies. Therefore, apply a secondary layer of filtering using key text phrases that are present on in scope WTNSs.&#xA;&#xA;" DisplayName="Filter Out Incorrect Classification" sap:VirtualizedContainerService.HintSize="200,259" sap2010:WorkflowViewState.IdRef="Flowchart_3">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
