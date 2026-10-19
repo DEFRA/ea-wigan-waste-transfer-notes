@@ -22,6 +22,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#038a18"
             },
@@ -42,6 +46,10 @@
           "Components": [],
           "SetValues": [],
           "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
             {
               "Key": "Color",
               "Value": "#fa6616"
@@ -64,6 +72,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#8a97a0"
             },
@@ -84,6 +96,10 @@
           "Components": [],
           "SetValues": [],
           "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
             {
               "Key": "Color",
               "Value": "#6eb84a"
@@ -106,6 +122,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#cac342"
             },
@@ -126,6 +146,10 @@
           "Components": [],
           "SetValues": [],
           "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
             {
               "Key": "Color",
               "Value": "#cb52f9"
@@ -148,6 +172,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#e3ce74"
             },
@@ -168,6 +196,10 @@
           "Components": [],
           "SetValues": [],
           "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
             {
               "Key": "Color",
               "Value": "#8d82d0"
@@ -190,6 +222,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#b0867e"
             },
@@ -211,6 +247,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#46aaff"
             },
@@ -219,7 +259,10 @@
               "Value": "v"
             }
           ],
-          "RuleSet": null,
+          "RuleSet": {
+            "Criticality": "Should",
+            "Rules": []
+          },
           "DefaultValue": ""
         },
         {
@@ -231,6 +274,10 @@
           "Components": [],
           "SetValues": [],
           "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
             {
               "Key": "Color",
               "Value": "#27e0ad"
@@ -253,6 +300,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#c76ac8"
             },
@@ -273,6 +324,10 @@
           "Components": [],
           "SetValues": [],
           "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
             {
               "Key": "Color",
               "Value": "#b822ff"
@@ -308,6 +363,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#038a18"
             },
@@ -328,6 +387,10 @@
           "Components": [],
           "SetValues": [],
           "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
             {
               "Key": "Color",
               "Value": "#fa6616"
@@ -350,6 +413,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#8a97a0"
             },
@@ -370,6 +437,10 @@
           "Components": [],
           "SetValues": [],
           "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
             {
               "Key": "Color",
               "Value": "#6eb84a"
@@ -392,6 +463,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#5493fc"
             },
@@ -412,6 +487,10 @@
           "Components": [],
           "SetValues": [],
           "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
             {
               "Key": "Color",
               "Value": "#94dc42"
@@ -434,6 +513,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#d1c389"
             },
@@ -442,7 +525,10 @@
               "Value": "v"
             }
           ],
-          "RuleSet": null,
+          "RuleSet": {
+            "Criticality": "Should",
+            "Rules": []
+          },
           "DefaultValue": ""
         },
         {
@@ -454,6 +540,10 @@
           "Components": [],
           "SetValues": [],
           "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
             {
               "Key": "Color",
               "Value": "#97a027"
@@ -476,6 +566,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#80afbc"
             },
@@ -496,6 +590,10 @@
           "Components": [],
           "SetValues": [],
           "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
             {
               "Key": "Color",
               "Value": "#3bcad6"
@@ -518,6 +616,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#7a93ea"
             },
@@ -538,6 +640,10 @@
           "Components": [],
           "SetValues": [],
           "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
             {
               "Key": "Color",
               "Value": "#699d99"
@@ -573,6 +679,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#038a18"
             },
@@ -593,6 +703,10 @@
           "Components": [],
           "SetValues": [],
           "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
             {
               "Key": "Color",
               "Value": "#fa6616"
@@ -615,6 +729,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#8a97a0"
             },
@@ -635,6 +753,10 @@
           "Components": [],
           "SetValues": [],
           "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
             {
               "Key": "Color",
               "Value": "#6eb84a"
@@ -657,6 +779,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#c51cda"
             },
@@ -677,6 +803,10 @@
           "Components": [],
           "SetValues": [],
           "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
             {
               "Key": "Color",
               "Value": "#fb2ed6"
@@ -699,6 +829,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#a3a2cd"
             },
@@ -720,6 +854,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#cb50aa"
             },
@@ -728,7 +866,10 @@
               "Value": "v"
             }
           ],
-          "RuleSet": null,
+          "RuleSet": {
+            "Criticality": "Should",
+            "Rules": []
+          },
           "DefaultValue": ""
         },
         {
@@ -740,6 +881,10 @@
           "Components": [],
           "SetValues": [],
           "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
             {
               "Key": "Color",
               "Value": "#f33578"
@@ -762,6 +907,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#5daabb"
             },
@@ -782,6 +931,10 @@
           "Components": [],
           "SetValues": [],
           "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
             {
               "Key": "Color",
               "Value": "#b7adb3"
@@ -804,6 +957,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#00d8f2"
             },
@@ -825,6 +982,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#a79c89"
             },
@@ -838,13 +999,17 @@
         },
         {
           "FieldId": "WasteTransferNote.NoCategory.NCDDutyOfCare.VehicleRegistration(SectionC)",
-          "FieldName": "Vehicle Registration (Section C)",
+          "FieldName": "Details (Section C)",
           "IsMultiValue": false,
           "Type": "Text",
           "DeriveFieldsFormat": "",
           "Components": [],
           "SetValues": [],
           "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
             {
               "Key": "Color",
               "Value": "#d874ea"
@@ -854,7 +1019,10 @@
               "Value": "h"
             }
           ],
-          "RuleSet": null,
+          "RuleSet": {
+            "Criticality": "Should",
+            "Rules": []
+          },
           "DefaultValue": ""
         },
         {
@@ -866,6 +1034,10 @@
           "Components": [],
           "SetValues": [],
           "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
             {
               "Key": "Color",
               "Value": "#bcd250"
@@ -888,6 +1060,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#87aa85"
             },
@@ -908,6 +1084,10 @@
           "Components": [],
           "SetValues": [],
           "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
             {
               "Key": "Color",
               "Value": "#c7b0b4"
@@ -930,6 +1110,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#9495b7"
             },
@@ -950,6 +1134,10 @@
           "Components": [],
           "SetValues": [],
           "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
             {
               "Key": "Color",
               "Value": "#8970e2"
@@ -972,6 +1160,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#e757a7"
             },
@@ -993,6 +1185,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#c2ba81"
             },
@@ -1013,6 +1209,10 @@
           "Components": [],
           "SetValues": [],
           "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
             {
               "Key": "Color",
               "Value": "#54b1e1"
@@ -1048,6 +1248,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#038a18"
             },
@@ -1068,6 +1272,10 @@
           "Components": [],
           "SetValues": [],
           "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
             {
               "Key": "Color",
               "Value": "#fa6616"
@@ -1090,6 +1298,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#8a97a0"
             },
@@ -1110,6 +1322,10 @@
           "Components": [],
           "SetValues": [],
           "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
             {
               "Key": "Color",
               "Value": "#6eb84a"
@@ -1132,6 +1348,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#d2d550"
             },
@@ -1152,6 +1372,10 @@
           "Components": [],
           "SetValues": [],
           "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
             {
               "Key": "Color",
               "Value": "#a8d550"
@@ -1174,6 +1398,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#b846c0"
             },
@@ -1195,6 +1423,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#9652f5"
             },
@@ -1203,7 +1435,10 @@
               "Value": "v"
             }
           ],
-          "RuleSet": null,
+          "RuleSet": {
+            "Criticality": "Should",
+            "Rules": []
+          },
           "DefaultValue": ""
         },
         {
@@ -1215,6 +1450,10 @@
           "Components": [],
           "SetValues": [],
           "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
             {
               "Key": "Color",
               "Value": "#db2b7d"
@@ -1237,6 +1476,10 @@
           "SetValues": [],
           "Metadata": [
             {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
               "Key": "Color",
               "Value": "#d8bd50"
             },
@@ -1257,6 +1500,10 @@
           "Components": [],
           "SetValues": [],
           "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
             {
               "Key": "Color",
               "Value": "#c23ba7"

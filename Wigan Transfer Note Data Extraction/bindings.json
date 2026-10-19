@@ -9,19 +9,6 @@
           "isExpression": false
         }
       }
-    },
-    {
-      "resource": "asset",
-      "metadata": {
-        "folderPath": {
-          "defaultValue": "Shared",
-          "isExpression": false
-        },
-        "name": {
-          "defaultValue": "Form Extractor Consumption Factor",
-          "isExpression": false
-        }
-      }
     }
   ]
 }

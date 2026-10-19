@@ -163,6 +163,9 @@
       "Path": "Process/Process Subflows/Process Form.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "intRowIndex&Sequence_40",
+        "strFieldName&Flowchart_2",
+        "strVehicleReg&Flowchart_2",
         "dtSource&Sequence_4",
         "oSubDocument&Flowchart_1",
         "erExtractionResult&Flowchart_1",
@@ -229,6 +232,12 @@
       "Path": "Process/Process Subflows/Cleanse Extracted Data.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "matNumberMatches&Sequence_81",
+        "strFoundPostcode&Sequence_74",
+        "strFoundPostcode&Sequence_50",
+        "strFoundPostcode&Sequence_46",
+        "strFoundPostcode&Sequence_42",
+        "strFoundPostcode&Sequence_38",
         "strDateOutTime&Sequence_4",
         "strDateOutDate&Sequence_4",
         "strDateInTime&Sequence_4",
@@ -255,6 +264,20 @@
         "in_Classification",
         "io_Config",
         "out_dtFinalData"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Process Transaction.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "in_TransactionItem",
+        "io_arrExitPoint",
+        "io_swProcessingTimer",
+        "io_Config",
+        "io_arrCaseID"
       ],
       "ConstantsSectionElementsOrder": null,
       "AddedNamespaces": null
