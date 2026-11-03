@@ -17245,15 +17245,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ws000012\\.nuget\\packages\\": {}
+    "C:\\Users\\ma000091\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "Wigan Transfer Note Data Extraction",
       "projectName": "Wigan Transfer Note Data Extraction",
-      "projectPath": "C:\\Users\\ws000012\\OneDrive - Defra\\Documents\\GitHub\\ea-wigan-waste-transfer-notes\\Wigan Transfer Note Data Extraction\\.local",
-      "packagesPath": "C:\\Users\\ws000012\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ws000012\\OneDrive - Defra\\Documents\\GitHub\\ea-wigan-waste-transfer-notes\\Wigan Transfer Note Data Extraction\\.local"
+      "projectPath": "C:\\Users\\ma000091\\OneDrive - Defra\\Documents\\GitHub\\ea-wigan-waste-transfer-notes\\Wigan Transfer Note Data Extraction\\.local",
+      "packagesPath": "C:\\Users\\ma000091\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ma000091\\OneDrive - Defra\\Documents\\GitHub\\ea-wigan-waste-transfer-notes\\Wigan Transfer Note Data Extraction\\.local"
     },
     "frameworks": {
       "net461": {

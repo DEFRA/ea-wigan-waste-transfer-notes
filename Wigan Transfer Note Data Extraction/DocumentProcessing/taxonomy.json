@@ -720,6 +720,31 @@
           "DefaultValue": ""
         },
         {
+          "FieldId": "WasteTransferNote.NoCategory.NCDDutyOfCare.Howisthewastecontained",
+          "FieldName": "How is the waste contained",
+          "IsMultiValue": false,
+          "Type": "Text",
+          "DeriveFieldsFormat": "",
+          "Components": [],
+          "SetValues": [],
+          "Metadata": [
+            {
+              "Key": "RequiresReference",
+              "Value": "False"
+            },
+            {
+              "Key": "Color",
+              "Value": "#b422cf"
+            },
+            {
+              "Key": "Hotkey",
+              "Value": "5"
+            }
+          ],
+          "RuleSet": null,
+          "DefaultValue": ""
+        },
+        {
           "FieldId": "WasteTransferNote.NoCategory.NCDDutyOfCare.A3HowMuchWaste",
           "FieldName": "A3 How Much Waste?",
           "IsMultiValue": false,
