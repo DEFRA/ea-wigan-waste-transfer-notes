@@ -234,6 +234,7 @@
       "Path": "Process/Process Subflows/Cleanse Extracted Data.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "strReg&Sequence_70",
         "strVRegDate&Sequence_59",
         "matNumberMatches&Sequence_81",
         "strFoundPostcode&Sequence_74",
