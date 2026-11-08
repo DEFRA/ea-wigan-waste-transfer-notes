@@ -12,7 +12,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1130,9099.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1130,9094.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Cleanse_Data_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="86">
@@ -123,7 +123,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Cleanse Data" sap:VirtualizedContainerService.HintSize="1140,9034" sap2010:WorkflowViewState.IdRef="Sequence_4">
+  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Cleanse Data" sap:VirtualizedContainerService.HintSize="1140,9029.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strWasteTypeDescription" />
       <Variable x:TypeArguments="x:String" Name="strCarrierHaulierName" />
@@ -139,7 +139,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Remove Suggestions from Validated Data" sap:VirtualizedContainerService.HintSize="1092,82.4" sap2010:WorkflowViewState.IdRef="Assign_5">
+    <Assign DisplayName="Remove Suggestions from Validated Data" sap:VirtualizedContainerService.HintSize="1092,81.6" sap2010:WorkflowViewState.IdRef="Assign_5">
       <Assign.To>
         <OutArgument x:TypeArguments="sd:DataTable">[out_dtFinalData]</OutArgument>
       </Assign.To>
@@ -147,7 +147,7 @@
         <InArgument x:TypeArguments="sd:DataTable">[in_dsDataSet.Tables(0).AsEnumerable().Take(1).CopyToDataTable]</InArgument>
       </Assign.Value>
     </Assign>
-    <Sequence sap2010:Annotation.AnnotationText="Dates can be input into forms in any format, they must be standardised into a uniform format, in this case &quot;dd/MM/yyyy&quot;.&#xA;&#xA;When Document Understanding creates an extracted data set it produces several datatables:&#xA;&#xA;Table 1 - Extracted data from the form, possibly multiple rows if suggestions for values have been provided.&#xA;Table 2 - Formatted data based on Taxonomy type. E.g. if a field is set to Date in the taxonomy, the extraction model will try to derive the dateparts of the value, 13/05/2023 -&gt; Day: 13, Month: 05, Year: 2023&#xA;&#xA;We can use Table 2 to perform string manipulation to convert extracted/validated dates into the required uniform format. " DisplayName="Standardise Date Formats" sap:VirtualizedContainerService.HintSize="1092,2941.6" sap2010:WorkflowViewState.IdRef="Sequence_7">
+    <Sequence sap2010:Annotation.AnnotationText="Dates can be input into forms in any format, they must be standardised into a uniform format, in this case &quot;dd/MM/yyyy&quot;.&#xA;&#xA;When Document Understanding creates an extracted data set it produces several datatables:&#xA;&#xA;Table 1 - Extracted data from the form, possibly multiple rows if suggestions for values have been provided.&#xA;Table 2 - Formatted data based on Taxonomy type. E.g. if a field is set to Date in the taxonomy, the extraction model will try to derive the dateparts of the value, 13/05/2023 -&gt; Day: 13, Month: 05, Year: 2023&#xA;&#xA;We can use Table 2 to perform string manipulation to convert extracted/validated dates into the required uniform format. " DisplayName="Standardise Date Formats" sap:VirtualizedContainerService.HintSize="1092,2940.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
       <Sequence.Variables>
         <Variable x:TypeArguments="sd:DataTable" Name="dtFormattedData" />
         <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(Of String)]" Name="listDateFields" />
@@ -158,7 +158,7 @@
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Identify Date Fields" sap:VirtualizedContainerService.HintSize="950.4,1046.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
+      <Sequence DisplayName="Identify Date Fields" sap:VirtualizedContainerService.HintSize="950.4,1046" sap2010:WorkflowViewState.IdRef="Sequence_9">
         <Sequence.Variables>
           <Variable x:TypeArguments="p2:DocumentTaxonomy" Name="Taxonomy" />
           <Variable x:TypeArguments="njl:JObject" Name="jsonTaxonomy" />
@@ -169,7 +169,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <p1:LoadTaxonomy DisplayName="Load Taxonomy" sap:VirtualizedContainerService.HintSize="590.8,106.4" sap2010:WorkflowViewState.IdRef="LoadTaxonomy_1" Taxonomy="[Taxonomy]" />
-        <Assign DisplayName="Deserialise Taxonomy to JSON" sap:VirtualizedContainerService.HintSize="590.8,82.4" sap2010:WorkflowViewState.IdRef="Assign_7">
+        <Assign DisplayName="Deserialise Taxonomy to JSON" sap:VirtualizedContainerService.HintSize="590.8,81.6" sap2010:WorkflowViewState.IdRef="Assign_7">
           <Assign.To>
             <OutArgument x:TypeArguments="njl:JObject">[jsonTaxonomy]</OutArgument>
           </Assign.To>
@@ -177,7 +177,7 @@
             <InArgument x:TypeArguments="njl:JObject">[Newtonsoft.Json.JsonConvert.DeserializeObject(Of JObject)(Taxonomy.Serialize())]</InArgument>
           </Assign.Value>
         </Assign>
-        <ui:ForEach x:TypeArguments="njl:JObject" CurrentIndex="{x:Null}" DisplayName="For Each Document Type" sap:VirtualizedContainerService.HintSize="590.8,696.8" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[jsonTaxonomy(&quot;DocumentTypes&quot;)]">
+        <ui:ForEach x:TypeArguments="njl:JObject" CurrentIndex="{x:Null}" DisplayName="For Each Document Type" sap:VirtualizedContainerService.HintSize="590.8,696.8" sap2010:WorkflowViewState.IdRef="ForEach`1_4" MaxIterations="{x:Null}" Values="[jsonTaxonomy(&quot;DocumentTypes&quot;)]">
           <ui:ForEach.Body>
             <ActivityAction x:TypeArguments="njl:JObject">
               <ActivityAction.Argument>
@@ -185,7 +185,7 @@
               </ActivityAction.Argument>
               <If Condition="[DocumentType(&quot;DocumentTypeId&quot;).ToString = in_Classification.DocumentTypeId]" DisplayName="Correct Document Type?" sap:VirtualizedContainerService.HintSize="555.2,570.4" sap2010:WorkflowViewState.IdRef="If_2">
                 <If.Then>
-                  <ui:ForEach x:TypeArguments="njl:JObject" CurrentIndex="{x:Null}" DisplayName="For Each Field" sap:VirtualizedContainerService.HintSize="519.6,378.4" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[DocumentType(&quot;Fields&quot;)]">
+                  <ui:ForEach x:TypeArguments="njl:JObject" CurrentIndex="{x:Null}" DisplayName="For Each Field" sap:VirtualizedContainerService.HintSize="519.6,378.4" sap2010:WorkflowViewState.IdRef="ForEach`1_3" MaxIterations="{x:Null}" Values="[DocumentType(&quot;Fields&quot;)]">
                     <ui:ForEach.Body>
                       <ActivityAction x:TypeArguments="njl:JObject">
                         <ActivityAction.Argument>
@@ -231,7 +231,7 @@
           <InArgument x:TypeArguments="sd:DataTable">[in_dsDataSet.Tables(1).AsEnumerable().Take(1).CopyToDataTable]</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Date Field" sap:VirtualizedContainerService.HintSize="950.4,1491.6" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[listDateFields]">
+      <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Date Field" sap:VirtualizedContainerService.HintSize="950.4,1491.6" sap2010:WorkflowViewState.IdRef="ForEach`1_5" MaxIterations="{x:Null}" Values="[listDateFields]">
         <ui:ForEach.Body>
           <ActivityAction x:TypeArguments="x:String">
             <ActivityAction.Argument>
@@ -335,8 +335,8 @@
                                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <ui:WriteTextFile File="{x:Null}" DisplayName="Write String to CSV" FileName="[io_Config(&quot;InProgress&quot;).ToString+&quot;\Datepart.csv&quot;]" sap:VirtualizedContainerService.HintSize="531,134" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[strDateValue]" />
-                                  <ui:ReadCsvFile PathResource="{x:Null}" DataTable="[dtDateparts]" Delimitator="Comma" DelimitatorForViewModel="Comma" DisplayName="Read Datepart CSV" FilePath="[io_Config(&quot;InProgress&quot;).ToString+&quot;\Datepart.csv&quot;]" sap:VirtualizedContainerService.HintSize="531,155" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1" />
+                                  <ui:WriteTextFile ContinueOnError="{x:Null}" DisplayName="Write String to CSV" Encoding="{x:Null}" File="{x:Null}" FileName="[io_Config(&quot;InProgress&quot;).ToString+&quot;\Datepart.csv&quot;]" sap:VirtualizedContainerService.HintSize="531,134" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[strDateValue]" />
+                                  <ui:ReadCsvFile DataTable="[dtDateparts]" Delimitator="Comma" DelimitatorForViewModel="Comma" DisplayName="Read Datepart CSV" Encoding="{x:Null}" FilePath="[io_Config(&quot;InProgress&quot;).ToString+&quot;\Datepart.csv&quot;]" sap:VirtualizedContainerService.HintSize="531,155" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1" IgnoreQuotes="{x:Null}" PathResource="{x:Null}" />
                                   <ui:MultipleAssign DisplayName="Initialise Datepart Strings" sap:VirtualizedContainerService.HintSize="531,162" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
                                     <ui:MultipleAssign.AssignOperations>
                                       <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
@@ -367,7 +367,7 @@
                                       </scg:List>
                                     </ui:MultipleAssign.AssignOperations>
                                   </ui:MultipleAssign>
-                                  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtDateparts]" DisplayName="For Each Extracted Datepart" sap:VirtualizedContainerService.HintSize="531,730" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                                  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtDateparts]" DisplayName="For Each Extracted Datepart" sap:VirtualizedContainerService.HintSize="531,730" sap2010:WorkflowViewState.IdRef="ForEachRow_1" MaxIterations="{x:Null}" Values="{x:Null}">
                                     <ui:ForEachRow.Body>
                                       <ActivityAction x:TypeArguments="sd:DataRow">
                                         <ActivityAction.Argument>
@@ -603,7 +603,7 @@
         </ui:ForEach.Body>
       </ui:ForEach>
     </Sequence>
-    <If Condition="[Split(in_Classification.DocumentTypeId, &quot;.&quot;).Last = &quot;JDickinson&quot;]" DisplayName="J Dickinson?" sap:VirtualizedContainerService.HintSize="1092,5182" sap2010:WorkflowViewState.IdRef="If_7">
+    <If Condition="[Split(in_Classification.DocumentTypeId, &quot;.&quot;).Last = &quot;JDickinson&quot;]" DisplayName="J Dickinson?" sap:VirtualizedContainerService.HintSize="1092,5178.8" sap2010:WorkflowViewState.IdRef="If_7">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -611,21 +611,21 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="1056.4,4990" sap2010:WorkflowViewState.IdRef="Sequence_19">
+        <Sequence sap:VirtualizedContainerService.HintSize="1056.4,4987.6" sap2010:WorkflowViewState.IdRef="Sequence_19">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[out_dtFinalData.Rows(0)(&quot;Vehicle Reg&quot;).ToString.Trim.Length &gt; 0]" DisplayName="Vehicle Reg Populated?" sap:VirtualizedContainerService.HintSize="1008.4,413.6" sap2010:WorkflowViewState.IdRef="If_14">
+          <If Condition="[out_dtFinalData.Rows(0)(&quot;Vehicle Reg&quot;).ToString.Trim.Length &gt; 0]" DisplayName="Vehicle Reg Populated?" sap:VirtualizedContainerService.HintSize="1008.4,412" sap2010:WorkflowViewState.IdRef="If_14">
             <If.Then>
-              <Sequence sap:VirtualizedContainerService.HintSize="482,221.6" sap2010:WorkflowViewState.IdRef="Sequence_32">
+              <Sequence sap:VirtualizedContainerService.HintSize="482,220.8" sap2010:WorkflowViewState.IdRef="Sequence_32">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign sap2010:Annotation.AnnotationText="The vehicle reg fields can contain superfluous information, so we are only interested in extracting the Vehicle Reg." DisplayName="Extract Vehicle Reg" sap:VirtualizedContainerService.HintSize="434,127.2" sap2010:WorkflowViewState.IdRef="Assign_44">
+                <Assign sap2010:Annotation.AnnotationText="The vehicle reg fields can contain superfluous information, so we are only interested in extracting the Vehicle Reg." DisplayName="Extract Vehicle Reg" sap:VirtualizedContainerService.HintSize="434,126.4" sap2010:WorkflowViewState.IdRef="Assign_44">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Vehicle Reg")]</OutArgument>
                   </Assign.To>
@@ -650,7 +650,7 @@
               </Sequence>
             </If.Else>
           </If>
-          <If Condition="[out_dtFinalData.Rows(0)(&quot;Drivers Name&quot;).ToString.Trim.Length &gt; 0]" DisplayName="Drivers Name Populated?" sap:VirtualizedContainerService.HintSize="1008.4,483.2" sap2010:WorkflowViewState.IdRef="If_38">
+          <If Condition="[out_dtFinalData.Rows(0)(&quot;Drivers Name&quot;).ToString.Trim.Length &gt; 0]" DisplayName="Drivers Name Populated?" sap:VirtualizedContainerService.HintSize="1008.4,482.4" sap2010:WorkflowViewState.IdRef="If_38">
             <If.Then>
               <Sequence sap:VirtualizedContainerService.HintSize="482,291.2" sap2010:WorkflowViewState.IdRef="Sequence_78">
                 <sap:WorkflowViewStateService.ViewState>
@@ -939,15 +939,18 @@
                   </Assign.To>
                   <Assign.Value>
                     <InArgument x:TypeArguments="x:String">
-                      <Literal x:TypeArguments="x:String" Value="" />
+                      <Literal x:TypeArguments="x:String">
+                        <Literal.Result>
+                          <OutArgument x:TypeArguments="x:String" />
+                        </Literal.Result></Literal>
                     </InArgument>
                   </Assign.Value>
                 </Assign>
               </Sequence>
             </If.Else>
           </If>
-          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Carrier / Haulier (Name)" DataTable="[out_dtFinalData]" DefaultValue="[strCarrierHaulierName]" DisplayName="Populate Carrier / Haulier Name" sap:VirtualizedContainerService.HintSize="1008.4,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2" />
-          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Carrier / Haulier (Address)" DataTable="[out_dtFinalData]" DefaultValue="[strCarrierHaulierAddress]" DisplayName="Populate Carrier / Haulier Address" sap:VirtualizedContainerService.HintSize="1008.4,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_3" />
+          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" ColumnName="Carrier / Haulier (Name)" DataTable="[out_dtFinalData]" DefaultValue="[strCarrierHaulierName]" DisplayName="Populate Carrier / Haulier Name" sap:VirtualizedContainerService.HintSize="1008.4,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2" MaxLength="{x:Null}" Unique="{x:Null}" />
+          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" ColumnName="Carrier / Haulier (Address)" DataTable="[out_dtFinalData]" DefaultValue="[strCarrierHaulierAddress]" DisplayName="Populate Carrier / Haulier Address" sap:VirtualizedContainerService.HintSize="1008.4,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_3" MaxLength="{x:Null}" Unique="{x:Null}" />
           <ui:FilterDataTable DataTable="[out_dtFinalData]" DisplayName="Remove Unsplit Column" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="1008.4,164" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[out_dtFinalData]" SelectColumnsMode="Remove">
             <ui:FilterDataTable.Filters>
               <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
@@ -1156,7 +1159,10 @@
                   </Assign.To>
                   <Assign.Value>
                     <InArgument x:TypeArguments="x:String">
-                      <Literal x:TypeArguments="x:String" Value="" />
+                      <Literal x:TypeArguments="x:String">
+                        <Literal.Result>
+                          <OutArgument x:TypeArguments="x:String" />
+                        </Literal.Result></Literal>
                     </InArgument>
                   </Assign.Value>
                 </Assign>
@@ -1166,7 +1172,10 @@
                   </Assign.To>
                   <Assign.Value>
                     <InArgument x:TypeArguments="x:String">
-                      <Literal x:TypeArguments="x:String" Value="" />
+                      <Literal x:TypeArguments="x:String">
+                        <Literal.Result>
+                          <OutArgument x:TypeArguments="x:String" />
+                        </Literal.Result></Literal>
                     </InArgument>
                   </Assign.Value>
                 </Assign>
@@ -1212,7 +1221,10 @@
                   </Assign.To>
                   <Assign.Value>
                     <InArgument x:TypeArguments="x:String">
-                      <Literal x:TypeArguments="x:String" Value="" />
+                      <Literal x:TypeArguments="x:String">
+                        <Literal.Result>
+                          <OutArgument x:TypeArguments="x:String" />
+                        </Literal.Result></Literal>
                     </InArgument>
                   </Assign.Value>
                 </Assign>
@@ -1222,7 +1234,10 @@
                   </Assign.To>
                   <Assign.Value>
                     <InArgument x:TypeArguments="x:String">
-                      <Literal x:TypeArguments="x:String" Value="" />
+                      <Literal x:TypeArguments="x:String">
+                        <Literal.Result>
+                          <OutArgument x:TypeArguments="x:String" />
+                        </Literal.Result></Literal>
                     </InArgument>
                   </Assign.Value>
                 </Assign>
@@ -1254,10 +1269,10 @@
               </Sequence>
             </If.Else>
           </If>
-          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Date In (Date)" DataTable="[out_dtFinalData]" DefaultValue="[strDateInDate]" DisplayName="Populate Date In (Date)" sap:VirtualizedContainerService.HintSize="1008.4,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_4" />
-          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Date In (Time)" DataTable="[out_dtFinalData]" DefaultValue="[strDateInTime]" DisplayName="Populate Date In (Time)" sap:VirtualizedContainerService.HintSize="1008.4,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_5" />
-          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Date Out (Date)" DataTable="[out_dtFinalData]" DefaultValue="[strDateOutDate]" DisplayName="Populate Date Out (Date)" sap:VirtualizedContainerService.HintSize="1008.4,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_6" />
-          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Date Out (Time)" DataTable="[out_dtFinalData]" DefaultValue="[strDateOutTime]" DisplayName="Populate Date Out (Time)" sap:VirtualizedContainerService.HintSize="1008.4,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_7">
+          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" ColumnName="Date In (Date)" DataTable="[out_dtFinalData]" DefaultValue="[strDateInDate]" DisplayName="Populate Date In (Date)" sap:VirtualizedContainerService.HintSize="1008.4,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_4" MaxLength="{x:Null}" Unique="{x:Null}" />
+          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" ColumnName="Date In (Time)" DataTable="[out_dtFinalData]" DefaultValue="[strDateInTime]" DisplayName="Populate Date In (Time)" sap:VirtualizedContainerService.HintSize="1008.4,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_5" MaxLength="{x:Null}" Unique="{x:Null}" />
+          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" ColumnName="Date Out (Date)" DataTable="[out_dtFinalData]" DefaultValue="[strDateOutDate]" DisplayName="Populate Date Out (Date)" sap:VirtualizedContainerService.HintSize="1008.4,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_6" MaxLength="{x:Null}" Unique="{x:Null}" />
+          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" ColumnName="Date Out (Time)" DataTable="[out_dtFinalData]" DefaultValue="[strDateOutTime]" DisplayName="Populate Date Out (Time)" sap:VirtualizedContainerService.HintSize="1008.4,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_7" MaxLength="{x:Null}" Unique="{x:Null}">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1320,10 +1335,13 @@
               <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Full Name (Section C)").ToString.ToUpper]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" Unique="{x:Null}" ColumnName="Vehicle Registration Date" DataTable="[out_dtFinalData]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="517.6,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_9" MaxLength="-1">
+          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" ColumnName="Vehicle Registration Date" DataTable="[out_dtFinalData]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="517.6,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_9" MaxLength="-1" Unique="{x:Null}">
             <ui:AddDataColumn.DefaultValue>
               <InArgument x:TypeArguments="x:String">
-                <Literal x:TypeArguments="x:String" Value="" />
+                <Literal x:TypeArguments="x:String">
+                  <Literal.Result>
+                    <OutArgument x:TypeArguments="x:String" />
+                  </Literal.Result></Literal>
               </InArgument>
             </ui:AddDataColumn.DefaultValue>
           </ui:AddDataColumn>
@@ -1640,7 +1658,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[Split(in_Classification.DocumentTypeId, &quot;.&quot;).Last = &quot;KennysSimplified&quot;]" DisplayName="Kennys Simplified?" sap:VirtualizedContainerService.HintSize="1092,53.2" sap2010:WorkflowViewState.IdRef="If_34">
+    <If Condition="[Split(in_Classification.DocumentTypeId, &quot;.&quot;).Last = &quot;KennysSimplified&quot;]" DisplayName="Kennys Simplified?" sap:VirtualizedContainerService.HintSize="1175.6,3496.8" sap2010:WorkflowViewState.IdRef="If_34">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1743,12 +1761,12 @@
               <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Carrier Name").ToString.ToUpper]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign DisplayName="Format Carrier (Other)" sap:VirtualizedContainerService.HintSize="1092,82.4" sap2010:WorkflowViewState.IdRef="Assign_82">
+          <Assign DisplayName="Format CBD (Other)" sap:VirtualizedContainerService.HintSize="1092,82.4" sap2010:WorkflowViewState.IdRef="Assign_82">
             <Assign.To>
-              <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Carrier (Other)")]</OutArgument>
+              <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("CBD (Other)")]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Carrier (Other)").ToString.ToUpper]</InArgument>
+              <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("CBD (Other)").ToString.ToUpper]</InArgument>
             </Assign.Value>
           </Assign>
           <Assign DisplayName="Format Broker" sap:VirtualizedContainerService.HintSize="1092,82.4" sap2010:WorkflowViewState.IdRef="Assign_90">
@@ -1915,7 +1933,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:ForEach x:TypeArguments="sd:DataColumn" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="The extraction can pick up leading/trailing whitespace from values. Add a loop to recurse through the columns and perform a trim." DisplayName="For Each Column" sap:VirtualizedContainerService.HintSize="1092,348" sap2010:WorkflowViewState.IdRef="ForEach`1_11" Values="[out_dtFinalData.Columns]">
+    <ui:ForEach x:TypeArguments="sd:DataColumn" sap2010:Annotation.AnnotationText="The extraction can pick up leading/trailing whitespace from values. Add a loop to recurse through the columns and perform a trim." CurrentIndex="{x:Null}" DisplayName="For Each Column" sap:VirtualizedContainerService.HintSize="1092,348" sap2010:WorkflowViewState.IdRef="ForEach`1_11" MaxIterations="{x:Null}" Values="[out_dtFinalData.Columns]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="sd:DataColumn">
           <ActivityAction.Argument>

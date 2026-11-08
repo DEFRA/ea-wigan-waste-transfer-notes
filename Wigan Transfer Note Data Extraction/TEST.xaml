@@ -105,6 +105,7 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.Persistence.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="TEST" sap:VirtualizedContainerService.HintSize="516,1724" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -131,7 +132,7 @@
         <OutArgument x:TypeArguments="x:Object">[io_Config("Local Filepath")]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:Object">["C:\Users\ma000091\Downloads\E100 - Page 1.pdf"]</InArgument>
+        <InArgument x:TypeArguments="x:Object">["C:\Users\ma000091\Downloads\2468298 WTN - Page 1.pdf"]</InArgument>
       </Assign.Value>
     </Assign>
     <Assign sap:VirtualizedContainerService.HintSize="468,82.4" sap2010:WorkflowViewState.IdRef="Assign_8">

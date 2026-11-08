@@ -149,7 +149,6 @@
       <AssemblyReference>System.Configuration.Install</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Flowchart sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process PDF" sap:VirtualizedContainerService.HintSize="1094,2336.8" sap2010:WorkflowViewState.IdRef="Flowchart_1">
@@ -190,7 +189,7 @@
           <av:PointCollection x:Key="ConnectorLocation">630,257.1 630,287.1 629.5,287.1 629.5,304.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Digitise &amp; Classify" sap:VirtualizedContainerService.HintSize="200,69.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+      <Sequence DisplayName="Digitise &amp; Classify" sap:VirtualizedContainerService.HintSize="580,3496.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -456,7 +455,7 @@
               <av:Point x:Key="ShapeLocation">569.5,304.5</av:Point>
               <av:Size x:Key="ShapeSize">120,87.2</av:Size>
               <av:PointCollection x:Key="FalseConnector">689.5,348.1 890,348.1 890,857.5</av:PointCollection>
-              <av:PointCollection x:Key="TrueConnector">569.5,348.1 470.8,348.1 470.8,428</av:PointCollection>
+              <av:PointCollection x:Key="TrueConnector">569.5,348.1 460,348.1 460,428</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <FlowDecision.True>
@@ -464,11 +463,11 @@
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">360,428</av:Point>
-                  <av:Size x:Key="ShapeSize">221.6,229.2</av:Size>
-                  <av:PointCollection x:Key="ConnectorLocation">470.8,657.2 470.8,687.2 459.5,687.2 459.5,722</av:PointCollection>
+                  <av:Size x:Key="ShapeSize">200,262</av:Size>
+                  <av:PointCollection x:Key="ConnectorLocation">460,690 460,720 459.5,720 459.5,722</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Flowchart sap2010:Annotation.AnnotationText="The Intelligent Keyword Classifier can incorrectly classify WTNs that are similar to those in scope (the same headers), but don't contain the right data. Therefore, apply a secondary layer of filtering using key text phrases that are present on in scope WTNSs.&#xA;&#xA;" DisplayName="Filter Out Incorrect Classification" sap:VirtualizedContainerService.HintSize="1227.6,1236" sap2010:WorkflowViewState.IdRef="Flowchart_3">
+              <Flowchart sap2010:Annotation.AnnotationText="The Intelligent Keyword Classifier can incorrectly classify WTNs that are similar to those in scope (the same headers), but don't contain the right data. Therefore, apply a secondary layer of filtering using key text phrases that are present on in scope WTNSs.&#xA;&#xA;" DisplayName="Filter Out Incorrect Classification" sap:VirtualizedContainerService.HintSize="200,262" sap2010:WorkflowViewState.IdRef="Flowchart_3">
                 <Flowchart.Variables>
                   <Variable x:TypeArguments="x:Boolean" Name="boolContinue" />
                 </Flowchart.Variables>
@@ -655,7 +654,7 @@
                                               <av:Size x:Key="ShapeSize">200,69.6</av:Size>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
-                                          <Sequence DisplayName="clear class and log" sap:VirtualizedContainerService.HintSize="482,398" sap2010:WorkflowViewState.IdRef="Sequence_109">
+                                          <Sequence DisplayName="clear class and log" sap:VirtualizedContainerService.HintSize="200,69.6" sap2010:WorkflowViewState.IdRef="Sequence_109">
                                             <Sequence.Variables>
                                               <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="listMatch" />
                                             </Sequence.Variables>
