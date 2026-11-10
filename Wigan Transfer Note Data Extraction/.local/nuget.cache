@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "oq13tiZtReMaxhmClA3AgXTj+DOuEwZ4O7B4vec+DV4JBE+aW88DweSsda98wFopPxhzOaZoewvK3Smk+d/1Wg==",
+  "dgSpecHash": "vE2e/s7ZcbPxo9iDcrSgQZ6YkKQdzIci78NTSVvyZUcdYz1H7U5k5cffaLhJaQ24kjeGX5jNoahUIVgcYBsk3w==",
   "success": true,
   "projectFilePath": "C:\\Users\\ma000091\\OneDrive - Defra\\Documents\\GitHub\\ea-wigan-waste-transfer-notes\\Wigan Transfer Note Data Extraction\\.local\\",
   "expectedPackageFiles": [
@@ -14,7 +14,7 @@
     "C:\\Users\\ma000091\\.nuget\\packages\\credentials\\1.0.2\\credentials.1.0.2.nupkg.sha512",
     "C:\\Users\\ma000091\\.nuget\\packages\\csvhelper\\16.0.0\\csvhelper.16.0.0.nupkg.sha512",
     "C:\\Users\\ma000091\\.nuget\\packages\\documentformat.openxml\\2.16.0\\documentformat.openxml.2.16.0.nupkg.sha512",
-    "C:\\Users\\ma000091\\.nuget\\packages\\dracoe.microsoft.graph\\1.0.41\\dracoe.microsoft.graph.1.0.41.nupkg.sha512",
+    "C:\\Users\\ma000091\\.nuget\\packages\\dracoe.microsoft.graph\\1.0.48\\dracoe.microsoft.graph.1.0.48.nupkg.sha512",
     "C:\\Users\\ma000091\\.nuget\\packages\\excelnumberformat\\1.1.0\\excelnumberformat.1.1.0.nupkg.sha512",
     "C:\\Users\\ma000091\\.nuget\\packages\\fsharp.core\\4.7.1\\fsharp.core.4.7.1.nupkg.sha512",
     "C:\\Users\\ma000091\\.nuget\\packages\\idp\\1.0.17\\idp.1.0.17.nupkg.sha512",
