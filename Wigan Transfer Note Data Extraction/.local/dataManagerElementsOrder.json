@@ -165,6 +165,7 @@
       "Path": "Process/Process Subflows/Process Form.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "strVersionID&Sequence_33",
         "oSubDocument&Flowchart_1",
         "erExtractionResult&Flowchart_1",
         "dsDataSet&Flowchart_1",
@@ -234,6 +235,9 @@
       "Path": "Process/Process Subflows/Cleanse Extracted Data.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "strReg&Sequence_32",
+        "strReg&Sequence_51",
+        "strReg&Sequence_59",
         "strReg&Sequence_70",
         "strVRegDate&Sequence_59",
         "matNumberMatches&Sequence_81",
