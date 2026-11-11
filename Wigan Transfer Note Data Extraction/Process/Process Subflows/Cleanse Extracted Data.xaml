@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Cleanse_Data" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:p="http://schemas.uipath.com/workflow/activities/document-processing-contracts/results" xmlns:p1="http://schemas.uipath.com/workflow/activities/intelligentocr" xmlns:p2="http://schemas.uipath.com/workflow/activities/document-processing-contracts/taxonomy" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Cleanse_Data" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:p="http://schemas.uipath.com/workflow/activities/document-processing-contracts/results" xmlns:p1="http://schemas.uipath.com/workflow/activities/intelligentocr" xmlns:p2="http://schemas.uipath.com/workflow/activities/document-processing-contracts/taxonomy" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_dsDataSet" Type="InArgument(sd:DataSet)" />
     <x:Property Name="in_Classification" Type="InArgument(p:ClassificationResult)" />
@@ -12,7 +12,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1698,6996</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1213.6,12634.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Cleanse_Data_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="86">
@@ -61,6 +61,7 @@
       <x:String>System.Text.RegularExpressions</x:String>
       <x:String>UiPath.Excel.Activities.Business</x:String>
       <x:String>UiPath.Excel.Model</x:String>
+      <x:String>System.Globalization</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -122,7 +123,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Cleanse Data" sap:VirtualizedContainerService.HintSize="1141,6931" sap2010:WorkflowViewState.IdRef="Sequence_4">
+  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Cleanse Data" sap:VirtualizedContainerService.HintSize="1223.6,12569.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strWasteTypeDescription" />
       <Variable x:TypeArguments="x:String" Name="strCarrierHaulierName" />
@@ -138,7 +139,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Remove Suggestions from Validated Data" sap:VirtualizedContainerService.HintSize="1093,82" sap2010:WorkflowViewState.IdRef="Assign_5">
+    <Assign DisplayName="Remove Suggestions from Validated Data" sap:VirtualizedContainerService.HintSize="1175.6,82.4" sap2010:WorkflowViewState.IdRef="Assign_5">
       <Assign.To>
         <OutArgument x:TypeArguments="sd:DataTable">[out_dtFinalData]</OutArgument>
       </Assign.To>
@@ -146,7 +147,7 @@
         <InArgument x:TypeArguments="sd:DataTable">[in_dsDataSet.Tables(0).AsEnumerable().Take(1).CopyToDataTable]</InArgument>
       </Assign.Value>
     </Assign>
-    <Sequence sap2010:Annotation.AnnotationText="Dates can be input into forms in any format, they must be standardised into a uniform format, in this case &quot;dd/MM/yyyy&quot;.&#xA;&#xA;When Document Understanding creates an extracted data set it produces several datatables:&#xA;&#xA;Table 1 - Extracted data from the form, possibly multiple rows if suggestions for values have been provided.&#xA;Table 2 - Formatted data based on Taxonomy type. E.g. if a field is set to Date in the taxonomy, the extraction model will try to derive the dateparts of the value, 13/05/2023 -&gt; Day: 13, Month: 05, Year: 2023&#xA;&#xA;We can use Table 2 to perform string manipulation to convert extracted/validated dates into the required uniform format. " DisplayName="Standardise Date Formats" sap:VirtualizedContainerService.HintSize="1093,2896" sap2010:WorkflowViewState.IdRef="Sequence_7">
+    <Sequence sap2010:Annotation.AnnotationText="Dates can be input into forms in any format, they must be standardised into a uniform format, in this case &quot;dd/MM/yyyy&quot;.&#xA;&#xA;When Document Understanding creates an extracted data set it produces several datatables:&#xA;&#xA;Table 1 - Extracted data from the form, possibly multiple rows if suggestions for values have been provided.&#xA;Table 2 - Formatted data based on Taxonomy type. E.g. if a field is set to Date in the taxonomy, the extraction model will try to derive the dateparts of the value, 13/05/2023 -&gt; Day: 13, Month: 05, Year: 2023&#xA;&#xA;We can use Table 2 to perform string manipulation to convert extracted/validated dates into the required uniform format. " DisplayName="Standardise Date Formats" sap:VirtualizedContainerService.HintSize="1175.6,2941.6" sap2010:WorkflowViewState.IdRef="Sequence_7">
       <Sequence.Variables>
         <Variable x:TypeArguments="sd:DataTable" Name="dtFormattedData" />
         <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(Of String)]" Name="listDateFields" />
@@ -157,7 +158,7 @@
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Identify Date Fields" sap:VirtualizedContainerService.HintSize="951,1037" sap2010:WorkflowViewState.IdRef="Sequence_9">
+      <Sequence DisplayName="Identify Date Fields" sap:VirtualizedContainerService.HintSize="950.4,1046.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
         <Sequence.Variables>
           <Variable x:TypeArguments="p2:DocumentTaxonomy" Name="Taxonomy" />
           <Variable x:TypeArguments="njl:JObject" Name="jsonTaxonomy" />
@@ -167,8 +168,8 @@
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <p1:LoadTaxonomy DisplayName="Load Taxonomy" sap:VirtualizedContainerService.HintSize="592,104" sap2010:WorkflowViewState.IdRef="LoadTaxonomy_1" Taxonomy="[Taxonomy]" />
-        <Assign DisplayName="Deserialise Taxonomy to JSON" sap:VirtualizedContainerService.HintSize="592,82" sap2010:WorkflowViewState.IdRef="Assign_7">
+        <p1:LoadTaxonomy DisplayName="Load Taxonomy" sap:VirtualizedContainerService.HintSize="590.8,106.4" sap2010:WorkflowViewState.IdRef="LoadTaxonomy_1" Taxonomy="[Taxonomy]" />
+        <Assign DisplayName="Deserialise Taxonomy to JSON" sap:VirtualizedContainerService.HintSize="590.8,82.4" sap2010:WorkflowViewState.IdRef="Assign_7">
           <Assign.To>
             <OutArgument x:TypeArguments="njl:JObject">[jsonTaxonomy]</OutArgument>
           </Assign.To>
@@ -176,23 +177,23 @@
             <InArgument x:TypeArguments="njl:JObject">[Newtonsoft.Json.JsonConvert.DeserializeObject(Of JObject)(Taxonomy.Serialize())]</InArgument>
           </Assign.Value>
         </Assign>
-        <ui:ForEach x:TypeArguments="njl:JObject" CurrentIndex="{x:Null}" DisplayName="For Each Document Type" sap:VirtualizedContainerService.HintSize="592,690" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[jsonTaxonomy(&quot;DocumentTypes&quot;)]">
+        <ui:ForEach x:TypeArguments="njl:JObject" CurrentIndex="{x:Null}" DisplayName="For Each Document Type" sap:VirtualizedContainerService.HintSize="590.8,696.8" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[jsonTaxonomy(&quot;DocumentTypes&quot;)]">
           <ui:ForEach.Body>
             <ActivityAction x:TypeArguments="njl:JObject">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="njl:JObject" Name="DocumentType" />
               </ActivityAction.Argument>
-              <If Condition="[DocumentType(&quot;DocumentTypeId&quot;).ToString = in_Classification.DocumentTypeId]" DisplayName="Correct Document Type?" sap:VirtualizedContainerService.HintSize="556,564" sap2010:WorkflowViewState.IdRef="If_2">
+              <If Condition="[DocumentType(&quot;DocumentTypeId&quot;).ToString = in_Classification.DocumentTypeId]" DisplayName="Correct Document Type?" sap:VirtualizedContainerService.HintSize="555.2,570.4" sap2010:WorkflowViewState.IdRef="If_2">
                 <If.Then>
-                  <ui:ForEach x:TypeArguments="njl:JObject" CurrentIndex="{x:Null}" DisplayName="For Each Field" sap:VirtualizedContainerService.HintSize="520,375" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[DocumentType(&quot;Fields&quot;)]">
+                  <ui:ForEach x:TypeArguments="njl:JObject" CurrentIndex="{x:Null}" DisplayName="For Each Field" sap:VirtualizedContainerService.HintSize="519.6,378.4" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[DocumentType(&quot;Fields&quot;)]">
                     <ui:ForEach.Body>
                       <ActivityAction x:TypeArguments="njl:JObject">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="njl:JObject" Name="Field" />
                         </ActivityAction.Argument>
-                        <If Condition="[Field(&quot;Type&quot;).ToString = &quot;Date&quot;]" DisplayName="Field is a Date?" sap:VirtualizedContainerService.HintSize="484,249" sap2010:WorkflowViewState.IdRef="If_3">
+                        <If Condition="[Field(&quot;Type&quot;).ToString = &quot;Date&quot;]" DisplayName="Field is a Date?" sap:VirtualizedContainerService.HintSize="484,252" sap2010:WorkflowViewState.IdRef="If_3">
                           <If.Then>
-                            <AddToCollection x:TypeArguments="x:String" Collection="[listDateFields]" DisplayName="Add to Date Fields" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="AddToCollection`1_1" Item="[Field(&quot;FieldName&quot;).ToString]" />
+                            <AddToCollection x:TypeArguments="x:String" Collection="[listDateFields]" DisplayName="Add to Date Fields" sap:VirtualizedContainerService.HintSize="200,24.8" sap2010:WorkflowViewState.IdRef="AddToCollection`1_1" Item="[Field(&quot;FieldName&quot;).ToString]" />
                           </If.Then>
                           <If.Else>
                             <Sequence sap2010:WorkflowViewState.IdRef="Sequence_11">
@@ -222,7 +223,7 @@
           </ui:ForEach.Body>
         </ui:ForEach>
       </Sequence>
-      <Assign DisplayName="Retrieve Formatted Data" sap:VirtualizedContainerService.HintSize="951,82" sap2010:WorkflowViewState.IdRef="Assign_6">
+      <Assign DisplayName="Retrieve Formatted Data" sap:VirtualizedContainerService.HintSize="950.4,82.4" sap2010:WorkflowViewState.IdRef="Assign_6">
         <Assign.To>
           <OutArgument x:TypeArguments="sd:DataTable">[dtFormattedData]</OutArgument>
         </Assign.To>
@@ -230,13 +231,13 @@
           <InArgument x:TypeArguments="sd:DataTable">[in_dsDataSet.Tables(1).AsEnumerable().Take(1).CopyToDataTable]</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Date Field" sap:VirtualizedContainerService.HintSize="951,1469" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[listDateFields]">
+      <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Date Field" sap:VirtualizedContainerService.HintSize="950.4,1491.6" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[listDateFields]">
         <ui:ForEach.Body>
           <ActivityAction x:TypeArguments="x:String">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="x:String" Name="Field" />
             </ActivityAction.Argument>
-            <Flowchart sap2010:Annotation.AnnotationText="It does not seem possible to get UiPath to format dates into a consistent UK date format.&#xA;&#xA;It appears that it follows the following formatting:&#xA;&#xA;1) First 2 Chars &lt; 12 - It assumes this is a month and will follow MM/dd/yyyy&#xA;2) First 2 Chars &gt; 12 - it assumes this is a date and will follow dd/MM/yyyy&#xA;3) It is missing one or more datapart, it will format as a csv string in format: &#xA;&#xA;Key,Value&#xA;&quot;Year&quot;,&quot;2002&quot;&#xA;&quot;Month&quot;,&quot;6&quot;&#xA;&#xA;18/12/19&#xA;2018-12-19&#xA;&#xA;We can determine which formatting has been applied for each data column and manipulate accordingly to get all date fields in dd/MM/yyyy" DisplayName="Format Dates" sap:VirtualizedContainerService.HintSize="915,1343" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+            <Flowchart sap2010:Annotation.AnnotationText="It does not seem possible to get UiPath to format dates into a consistent UK date format.&#xA;&#xA;It appears that it follows the following formatting:&#xA;&#xA;1) First 2 Chars &lt; 12 - It assumes this is a month and will follow MM/dd/yyyy&#xA;2) First 2 Chars &gt; 12 - it assumes this is a date and will follow dd/MM/yyyy&#xA;3) It is missing one or more datapart, it will format as a csv string in format: &#xA;&#xA;Key,Value&#xA;&quot;Year&quot;,&quot;2002&quot;&#xA;&quot;Month&quot;,&quot;6&quot;&#xA;&#xA;18/12/19&#xA;2018-12-19&#xA;&#xA;We can determine which formatting has been applied for each data column and manipulate accordingly to get all date fields in dd/MM/yyyy" DisplayName="Format Dates" sap:VirtualizedContainerService.HintSize="914.8,1365.2" sap2010:WorkflowViewState.IdRef="Flowchart_1">
               <Flowchart.Variables>
                 <Variable x:TypeArguments="x:String" Name="strDateValue" />
               </Flowchart.Variables>
@@ -244,7 +245,7 @@
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <av:Point x:Key="ShapeLocation">450,2.5</av:Point>
-                  <av:Size x:Key="ShapeSize">60,75</av:Size>
+                  <av:Size x:Key="ShapeSize">60,75.2</av:Size>
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                   <av:PointCollection x:Key="ConnectorLocation">480,77.5 480,107.5 449,107.5 449,127.5</av:PointCollection>
                   <x:Double x:Key="Width">880.895</x:Double>
@@ -258,11 +259,11 @@
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <av:Point x:Key="ShapeLocation">349,127.5</av:Point>
-                    <av:Size x:Key="ShapeSize">200,52</av:Size>
+                    <av:Size x:Key="ShapeSize">200,53.2</av:Size>
                     <av:PointCollection x:Key="ConnectorLocation">449,180.5 449,210.5 480,210.5 480,237.5</av:PointCollection>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign DisplayName="Assign Date Value" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Assign_8">
+                <Assign DisplayName="Assign Date Value" sap:VirtualizedContainerService.HintSize="200,53.2" sap2010:WorkflowViewState.IdRef="Assign_8">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[strDateValue]</OutArgument>
                   </Assign.To>
@@ -277,36 +278,36 @@
                   </sap:WorkflowViewStateService.ViewState>
                 </Assign>
                 <FlowStep.Next>
-                  <FlowDecision x:Name="__ReferenceID5" Condition="[NOT(strDateValue = &quot;&quot;)]" DisplayName="Not Null?" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
+                  <FlowDecision x:Name="__ReferenceID5" Condition="[NOT(strDateValue = &quot;&quot;)]" DisplayName="Not Null?" sap:VirtualizedContainerService.HintSize="70,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         <av:Point x:Key="ShapeLocation">445,237.5</av:Point>
-                        <av:Size x:Key="ShapeSize">70,87</av:Size>
+                        <av:Size x:Key="ShapeSize">70,87.2</av:Size>
                         <av:PointCollection x:Key="TrueConnector">445,281 382.641666666667,281 382.641666666667,376.5</av:PointCollection>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <FlowDecision.True>
-                      <FlowDecision x:Name="__ReferenceID6" Condition="[strDateValue.Substring(0,2) = &quot;Ke&quot; OR Regex.IsMatch(Right(strDateValue,2),&quot;[0-9]{2}&quot;)]" DisplayName="Formattable Date?" sap:VirtualizedContainerService.HintSize="102,87" sap2010:WorkflowViewState.IdRef="FlowDecision_5">
+                      <FlowDecision x:Name="__ReferenceID6" Condition="[strDateValue.Substring(0,2) = &quot;Ke&quot; OR Regex.IsMatch(Right(strDateValue,2),&quot;[0-9]{2}&quot;)]" DisplayName="Formattable Date?" sap:VirtualizedContainerService.HintSize="103.2,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_5">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             <av:Point x:Key="ShapeLocation">330.641666666667,376.5</av:Point>
-                            <av:Size x:Key="ShapeSize">102,87</av:Size>
+                            <av:Size x:Key="ShapeSize">103.2,87.2</av:Size>
                             <av:PointCollection x:Key="TrueConnector">330.641666666667,420 280,420 280,516.5</av:PointCollection>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <FlowDecision.True>
-                          <FlowDecision x:Name="__ReferenceID1" Condition="[strDateValue.Substring(0,2) = &quot;Ke&quot;]" DisplayName="Partial Date?" sap:VirtualizedContainerService.HintSize="71,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+                          <FlowDecision x:Name="__ReferenceID1" Condition="[strDateValue.Substring(0,2) = &quot;Ke&quot;]" DisplayName="Partial Date?" sap:VirtualizedContainerService.HintSize="71.2,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 <av:Point x:Key="ShapeLocation">244,516.5</av:Point>
-                                <av:Size x:Key="ShapeSize">71,87</av:Size>
-                                <av:PointCollection x:Key="FalseConnector">315,560 478.141666666667,560 478.141666666667,676.5</av:PointCollection>
+                                <av:Size x:Key="ShapeSize">71.2,87.2</av:Size>
+                                <av:PointCollection x:Key="FalseConnector">315.2,560.1 479.841666666667,560.1 479.841666666667,676.5</av:PointCollection>
                                 <x:String x:Key="FalseLabel">Full Date</x:String>
                                 <x:String x:Key="TrueLabel">Partial Date</x:String>
                                 <av:PointCollection x:Key="TrueConnector">244,560 100,560 100,696</av:PointCollection>
@@ -317,11 +318,11 @@
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <av:Point x:Key="ShapeLocation">0,696</av:Point>
-                                    <av:Size x:Key="ShapeSize">200,67</av:Size>
-                                    <av:PointCollection x:Key="ConnectorLocation">200,729.5 230,729.5 230,776 438.895,776 438.895,996.5 468.895,996.5</av:PointCollection>
+                                    <av:Size x:Key="ShapeSize">200,69.6</av:Size>
+                                    <av:PointCollection x:Key="ConnectorLocation">200,730.8 230,730.8 230,776 438.895,776 438.895,996 468.895,996</av:PointCollection>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <Sequence DisplayName="Format Partial Date" sap:VirtualizedContainerService.HintSize="200,67" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                <Sequence DisplayName="Format Partial Date" sap:VirtualizedContainerService.HintSize="200,69.6" sap2010:WorkflowViewState.IdRef="Sequence_12">
                                   <Sequence.Variables>
                                     <Variable x:TypeArguments="sd:DataTable" Name="dtDateparts" />
                                     <Variable x:TypeArguments="x:String" Name="strDay" />
@@ -486,10 +487,10 @@
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <av:Point x:Key="ShapeLocation">468.895,970</av:Point>
-                                        <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                        <av:Size x:Key="ShapeSize">200,53.2</av:Size>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <Assign DisplayName="Output Formatted Value" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Assign_9">
+                                    <Assign DisplayName="Output Formatted Value" sap:VirtualizedContainerService.HintSize="200,53.2" sap2010:WorkflowViewState.IdRef="Assign_9">
                                       <Assign.To>
                                         <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0).Item(Field)]</OutArgument>
                                       </Assign.To>
@@ -508,15 +509,15 @@
                               </FlowStep>
                             </FlowDecision.True>
                             <FlowDecision.False>
-                              <FlowDecision x:Name="__ReferenceID2" Condition="[CType(Right(strDateValue,2), Int32) &lt;= 12]" DisplayName="First Datepart &lt;= 12?" sap:VirtualizedContainerService.HintSize="115,87" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
+                              <FlowDecision x:Name="__ReferenceID2" Condition="[CType(Right(strDateValue,2), Int32) &lt;= 12]" DisplayName="First Datepart &lt;= 12?" sap:VirtualizedContainerService.HintSize="118.4,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                     <av:Point x:Key="ShapeLocation">420.641666666667,676.5</av:Point>
-                                    <av:Size x:Key="ShapeSize">115,87</av:Size>
+                                    <av:Size x:Key="ShapeSize">118.4,87.2</av:Size>
                                     <av:PointCollection x:Key="TrueConnector">420.641666666667,720 310,720 310,806</av:PointCollection>
-                                    <av:PointCollection x:Key="FalseConnector">535.641666666667,720 685.641666666667,720 685.641666666667,1050 568.895,1050 568.895,1023</av:PointCollection>
+                                    <av:PointCollection x:Key="FalseConnector">539.041666666667,720.1 689.041666666667,720.1 689.041666666667,1050.1 568.895,1050.1 568.895,1023.2</av:PointCollection>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                                 <FlowDecision.True>
@@ -524,11 +525,11 @@
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <av:Point x:Key="ShapeLocation">210,806</av:Point>
-                                        <av:Size x:Key="ShapeSize">200,67</av:Size>
-                                        <av:PointCollection x:Key="ConnectorLocation">410,839.5 568.895,839.5 568.895,970</av:PointCollection>
+                                        <av:Size x:Key="ShapeSize">200,69.6</av:Size>
+                                        <av:PointCollection x:Key="ConnectorLocation">410,840.8 568.895,840.8 568.895,970</av:PointCollection>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <Sequence DisplayName="Format US Date -&gt; UK Date" sap:VirtualizedContainerService.HintSize="200,67" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                                    <Sequence DisplayName="Format US Date -&gt; UK Date" sap:VirtualizedContainerService.HintSize="200,69.6" sap2010:WorkflowViewState.IdRef="Sequence_13">
                                       <Sequence.Variables>
                                         <Variable x:TypeArguments="x:String" Name="strMonth" />
                                         <Variable x:TypeArguments="x:String" Name="strDay" />
@@ -602,28 +603,350 @@
         </ui:ForEach.Body>
       </ui:ForEach>
     </Sequence>
-    <If Condition="[Split(in_Classification.DocumentTypeId, &quot;.&quot;).Last = &quot;JDickinson&quot;]" DisplayName="J Dickinson?" sap:VirtualizedContainerService.HintSize="1093,1449" sap2010:WorkflowViewState.IdRef="If_7">
+    <If Condition="[Split(in_Classification.DocumentTypeId, &quot;.&quot;).Last = &quot;JDickinson&quot;]" DisplayName="J Dickinson?" sap:VirtualizedContainerService.HintSize="1175.6,53.2" sap2010:WorkflowViewState.IdRef="If_7">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="1057,1260" sap2010:WorkflowViewState.IdRef="Sequence_19">
+        <Sequence sap:VirtualizedContainerService.HintSize="1140,5360.4" sap2010:WorkflowViewState.IdRef="Sequence_19">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If sap2010:Annotation.AnnotationText="The Carrier / Haulier field seems to always follow the format: &#xA;&#xA;HAULIER NAME . HAULIER ADDRESS&#xA;&#xA;We can check to see if there is exactly one &quot;.&quot; character. If there is then we can split the data into name/address. Else we will have to leave it all as a single field." Condition="[(out_dtFinalData.Rows(0)(&quot;Carrier / Haulier&quot;).ToString.Length - out_dtFinalData.Rows(0)(&quot;Carrier / Haulier&quot;).ToString.Replace(&quot;.&quot;,&quot;&quot;).Length) = 1]" DisplayName="Carrier / Haulier Splittable?" sap:VirtualizedContainerService.HintSize="1009,537" sap2010:WorkflowViewState.IdRef="If_8">
+          <If Condition="[out_dtFinalData.Rows(0)(&quot;Vehicle Reg&quot;).ToString.Trim.Length &gt; 0]" DisplayName="Vehicle Reg Populated?" sap:VirtualizedContainerService.HintSize="1092,784" sap2010:WorkflowViewState.IdRef="If_14">
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="1056.4,592" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="strReg" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="Assign - registration extractoin j dickinson" sap:VirtualizedContainerService.HintSize="1008.4,82.4" sap2010:WorkflowViewState.IdRef="Assign_117">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[strReg]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(out_dtFinalData.Rows(0)("Vehicle Reg").ToString.ToUpper,"\b(?:[A-Z]\s?\d{2}\s?[A-Z]{3}|[A-Z]{2}\s?\d{2}\s?[A-Z]{3}|[A-Z]\s?\d{1,3}\s?[A-Z]{3}|[A-Z]{3}\s?\d{1,3}\s?[A-Z]|\d{1,4}\s?[A-Z]{1,2}|\d{1,3}\s?[A-Z]{1,3}|[A-Z]{1,2}\s?\d{1,4}|[A-Z]{1,3}\s?\d{1,3}|[A-Z]{2}\s?\d{2}\s?[A-Z]{2}\s?\d)\b").Value.Replace(" ","")]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <If Condition="[string.IsNullOrWhiteSpace(strReg)]" DisplayName="If - extracted" sap:VirtualizedContainerService.HintSize="1008.4,383.2" sap2010:WorkflowViewState.IdRef="If_49">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="482,176.8" sap2010:WorkflowViewState.IdRef="Sequence_101">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign DisplayName="nothing Extracted -  format text" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_118">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Vehicle Reg")]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Vehicle Reg").ToString.ToUpper.Replace(" ","")]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap:VirtualizedContainerService.HintSize="482,221.6" sap2010:WorkflowViewState.IdRef="Sequence_102">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap2010:Annotation.AnnotationText="The vehicle reg fields can contain superfluous information, so we are only interested in extracting the Vehicle Reg." DisplayName="Extract Vehicle Reg" sap:VirtualizedContainerService.HintSize="434,127.2" sap2010:WorkflowViewState.IdRef="Assign_44">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Vehicle Reg")]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">[strReg]</InArgument>
+                        </Assign.Value>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Assign>
+                    </Sequence>
+                  </If.Else>
+                </If>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_33">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Sequence>
+            </If.Else>
+          </If>
+          <If Condition="[out_dtFinalData.Rows(0)(&quot;Drivers Name&quot;).ToString.Trim.Length &gt; 0]" DisplayName="Drivers Name Populated?" sap:VirtualizedContainerService.HintSize="1092,483.2" sap2010:WorkflowViewState.IdRef="If_38">
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="482,291.2" sap2010:WorkflowViewState.IdRef="Sequence_78">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="Proper Case Drivers Name" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_97">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Drivers Name")]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Object">[System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(out_dtFinalData.Rows(0)("Drivers Name").ToString)]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Uppercase Drivers Last Name" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_94">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Drivers Name")]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Drivers Name").ToString.Replace(out_dtFinalData.Rows(0)("Drivers Name").ToString.Split(" "c).Last, out_dtFinalData.Rows(0)("Drivers Name").ToString.Split(" "c).Last.ToUpper)]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_79">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Sequence>
+            </If.Else>
+          </If>
+          <If Condition="[out_dtFinalData.Rows(0)(&quot;Delivery Address / Producer Site&quot;).ToString.Trim.Length &gt; 0]" DisplayName="Delivery Address / Producer Site Populated?" sap:VirtualizedContainerService.HintSize="1092,884" sap2010:WorkflowViewState.IdRef="If_17">
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="565.6,692" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="strFoundPostcode" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="Uppercase Text" sap:VirtualizedContainerService.HintSize="517.6,82.4" sap2010:WorkflowViewState.IdRef="Assign_48">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Delivery Address / Producer Site")]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Delivery Address / Producer Site").ToString.ToUpper]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Find Postcode" sap:VirtualizedContainerService.HintSize="517.6,82.4" sap2010:WorkflowViewState.IdRef="Assign_49">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[strFoundPostcode]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(out_dtFinalData.Rows(0)("Delivery Address / Producer Site").ToString, "([a-zA-Z]{1,2}\d{1,2}[a-zA-Z]{0,2})\s*?(\d[a-zA-Z]{2})").Value]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <If Condition="[NOT(String.IsNullOrEmpty(strFoundPostcode))]" DisplayName="Found Postcode?" sap:VirtualizedContainerService.HintSize="517.6,368.8" sap2010:WorkflowViewState.IdRef="If_18">
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="482,176.8" sap2010:WorkflowViewState.IdRef="Sequence_39">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign DisplayName="Format Postcode" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_50">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Delivery Address / Producer Site")]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Delivery Address / Producer Site").ToString.Replace(strFoundPostcode, strFoundPostcode.Replace(" ",""))]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_40">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Sequence>
+                  </If.Else>
+                </If>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_41">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Sequence>
+            </If.Else>
+          </If>
+          <If Condition="[out_dtFinalData.Rows(0)(&quot;Carrier / Haulier&quot;).ToString.Trim.Length &gt; 0]" DisplayName="Carrier / Haulier Populated?" sap:VirtualizedContainerService.HintSize="1092,884" sap2010:WorkflowViewState.IdRef="If_19">
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="565.6,692" sap2010:WorkflowViewState.IdRef="Sequence_42">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="strFoundPostcode" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="Uppercase Text" sap:VirtualizedContainerService.HintSize="517.6,82.4" sap2010:WorkflowViewState.IdRef="Assign_51">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Carrier / Haulier")]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Carrier / Haulier").ToString.ToUpper]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Find Postcode" sap:VirtualizedContainerService.HintSize="517.6,82.4" sap2010:WorkflowViewState.IdRef="Assign_52">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[strFoundPostcode]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(out_dtFinalData.Rows(0)("Carrier / Haulier").ToString, "([a-zA-Z]{1,2}\d{1,2}[a-zA-Z]{0,2})\s*?(\d[a-zA-Z]{2})").Value]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <If Condition="[NOT(String.IsNullOrEmpty(strFoundPostcode))]" DisplayName="Found Postcode?" sap:VirtualizedContainerService.HintSize="517.6,368.8" sap2010:WorkflowViewState.IdRef="If_20">
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="482,176.8" sap2010:WorkflowViewState.IdRef="Sequence_43">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign DisplayName="Format Postcode" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_53">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Carrier / Haulier")]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Carrier / Haulier").ToString.Replace(strFoundPostcode, strFoundPostcode.Replace(" ",""))]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_44">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Sequence>
+                  </If.Else>
+                </If>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_45">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Sequence>
+            </If.Else>
+          </If>
+          <If Condition="[out_dtFinalData.Rows(0)(&quot;Waste Receiver (Address)&quot;).ToString.Trim.Length &gt; 0]" DisplayName="Waste Receiver (Address) Populated?" sap:VirtualizedContainerService.HintSize="1092,884" sap2010:WorkflowViewState.IdRef="If_21">
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="565.6,692" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="strFoundPostcode" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="Uppercase Text" sap:VirtualizedContainerService.HintSize="517.6,82.4" sap2010:WorkflowViewState.IdRef="Assign_54">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Waste Receiver (Address)")]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Waste Receiver (Address)").ToString.ToUpper]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Find Postcode" sap:VirtualizedContainerService.HintSize="517.6,82.4" sap2010:WorkflowViewState.IdRef="Assign_55">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[strFoundPostcode]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(out_dtFinalData.Rows(0)("Waste Receiver (Address)").ToString, "([a-zA-Z]{1,2}\d{1,2}[a-zA-Z]{0,2})\s*?(\d[a-zA-Z]{2})").Value]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <If Condition="[NOT(String.IsNullOrEmpty(strFoundPostcode))]" DisplayName="Found Postcode?" sap:VirtualizedContainerService.HintSize="517.6,368.8" sap2010:WorkflowViewState.IdRef="If_22">
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="482,176.8" sap2010:WorkflowViewState.IdRef="Sequence_47">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign DisplayName="Format Postcode" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_56">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Waste Receiver (Address)")]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Waste Receiver (Address)").ToString.Replace(strFoundPostcode, strFoundPostcode.Replace(" ",""))]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_48">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Sequence>
+                  </If.Else>
+                </If>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_49">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Sequence>
+            </If.Else>
+          </If>
+          <If sap2010:Annotation.AnnotationText="The Carrier / Haulier field seems to always follow the format: &#xA;&#xA;HAULIER NAME . HAULIER ADDRESS&#xA;&#xA;We can check to see if there is exactly one &quot;.&quot; character. If there is then we can split the data into name/address. Else we will have to leave it all as a single field." Condition="[(out_dtFinalData.Rows(0)(&quot;Carrier / Haulier&quot;).ToString.Length - out_dtFinalData.Rows(0)(&quot;Carrier / Haulier&quot;).ToString.Replace(&quot;.&quot;,&quot;&quot;).Length) = 1]" DisplayName="Carrier / Haulier Splittable?" sap:VirtualizedContainerService.HintSize="1092,546.8" sap2010:WorkflowViewState.IdRef="If_8">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence sap:VirtualizedContainerService.HintSize="482,290" sap2010:WorkflowViewState.IdRef="Sequence_23">
+              <Sequence sap:VirtualizedContainerService.HintSize="482,291.2" sap2010:WorkflowViewState.IdRef="Sequence_23">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign DisplayName="Assign strCarrierHaulierName" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_21">
+                <Assign DisplayName="Assign strCarrierHaulierName" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_21">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[strCarrierHaulierName]</OutArgument>
                   </Assign.To>
@@ -631,7 +954,7 @@
                     <InArgument x:TypeArguments="x:String">[out_dtFinalData.Rows(0)("Carrier / Haulier").ToString.Split("."c).First]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign DisplayName="Assign strCarrierHaulierAddress" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_22">
+                <Assign DisplayName="Assign strCarrierHaulierAddress" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_22">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[strCarrierHaulierAddress]</OutArgument>
                   </Assign.To>
@@ -642,13 +965,13 @@
               </Sequence>
             </If.Then>
             <If.Else>
-              <Sequence sap:VirtualizedContainerService.HintSize="482,290" sap2010:WorkflowViewState.IdRef="Sequence_24">
+              <Sequence sap:VirtualizedContainerService.HintSize="482,291.2" sap2010:WorkflowViewState.IdRef="Sequence_24">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign DisplayName="Assign strCarrierHaulierName" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_23">
+                <Assign DisplayName="Assign strCarrierHaulierName" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_23">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[strCarrierHaulierName]</OutArgument>
                   </Assign.To>
@@ -656,22 +979,20 @@
                     <InArgument x:TypeArguments="x:String">[out_dtFinalData.Rows(0)("Carrier / Haulier").ToString]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign DisplayName="Assign strCarrierHaulierAddress" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_24">
+                <Assign DisplayName="Assign strCarrierHaulierAddress" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_24">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[strCarrierHaulierAddress]</OutArgument>
                   </Assign.To>
                   <Assign.Value>
-                    <InArgument x:TypeArguments="x:String">
-                      <Literal x:TypeArguments="x:String" Value="" />
-                    </InArgument>
+                    <InArgument x:TypeArguments="x:String">[Nothing]</InArgument>
                   </Assign.Value>
                 </Assign>
               </Sequence>
             </If.Else>
           </If>
-          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Carrier / Haulier (Name)" DataTable="[out_dtFinalData]" DefaultValue="[strCarrierHaulierName]" DisplayName="Populate Carrier / Haulier Name" sap:VirtualizedContainerService.HintSize="1009,186" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2" />
-          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Carrier / Haulier (Address)" DataTable="[out_dtFinalData]" DefaultValue="[strCarrierHaulierAddress]" DisplayName="Populate Carrier / Haulier Address" sap:VirtualizedContainerService.HintSize="1009,186" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_3" />
-          <ui:FilterDataTable DataTable="[out_dtFinalData]" DisplayName="Remove Unsplit Column" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="1009,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[out_dtFinalData]" SelectColumnsMode="Remove">
+          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Carrier / Haulier (Name)" DataTable="[out_dtFinalData]" DefaultValue="[strCarrierHaulierName]" DisplayName="Populate Carrier / Haulier Name" sap:VirtualizedContainerService.HintSize="1092,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2" />
+          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Carrier / Haulier (Address)" DataTable="[out_dtFinalData]" DefaultValue="[strCarrierHaulierAddress]" DisplayName="Populate Carrier / Haulier Address" sap:VirtualizedContainerService.HintSize="1092,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_3" />
+          <ui:FilterDataTable DataTable="[out_dtFinalData]" DisplayName="Remove Unsplit Column" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="1092,164" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[out_dtFinalData]" SelectColumnsMode="Remove">
             <ui:FilterDataTable.Filters>
               <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                 <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="LT" />
@@ -695,52 +1016,254 @@
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[Split(in_Classification.DocumentTypeId, &quot;.&quot;).Last = &quot;NCDOwnNotes&quot;]" DisplayName="NCD Own Notes?" sap:VirtualizedContainerService.HintSize="1093,2280" sap2010:WorkflowViewState.IdRef="If_9">
+    <If Condition="[Split(in_Classification.DocumentTypeId, &quot;.&quot;).Last = &quot;NCDOwnNotes&quot;]" DisplayName="NCD Own Notes?" sap:VirtualizedContainerService.HintSize="1175.6,53.2" sap2010:WorkflowViewState.IdRef="If_9">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="1057,2091" sap2010:WorkflowViewState.IdRef="Sequence_27">
+        <Sequence sap:VirtualizedContainerService.HintSize="1140,4649.6" sap2010:WorkflowViewState.IdRef="Sequence_27">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[String.IsNullOrWhiteSpace(out_dtFinalData.Rows(0)(&quot;Date In&quot;).ToString)]" DisplayName="Date In Populated?" sap:VirtualizedContainerService.HintSize="1009,450" sap2010:WorkflowViewState.IdRef="If_10">
+          <If Condition="[out_dtFinalData.Rows(0)(&quot;Customer Name&quot;).ToString.Trim.Length &gt; 0]" DisplayName="Customer Name Populated?" sap:VirtualizedContainerService.HintSize="1092,368.8" sap2010:WorkflowViewState.IdRef="If_41">
             <If.Then>
-              <Sequence sap:VirtualizedContainerService.HintSize="482,290" sap2010:WorkflowViewState.IdRef="Sequence_25">
+              <Sequence sap:VirtualizedContainerService.HintSize="482,176.8" sap2010:WorkflowViewState.IdRef="Sequence_85">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign DisplayName="Assign strDateInDate" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_25">
+                <Assign DisplayName="Uppercase Customer Name" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_99">
                   <Assign.To>
-                    <OutArgument x:TypeArguments="x:String">[strDateInDate]</OutArgument>
+                    <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Customer Name")]</OutArgument>
                   </Assign.To>
                   <Assign.Value>
-                    <InArgument x:TypeArguments="x:String">
-                      <Literal x:TypeArguments="x:String" Value="" />
-                    </InArgument>
-                  </Assign.Value>
-                </Assign>
-                <Assign DisplayName="Assign strDateInTime" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_26">
-                  <Assign.To>
-                    <OutArgument x:TypeArguments="x:String">[strDateInTime]</OutArgument>
-                  </Assign.To>
-                  <Assign.Value>
-                    <InArgument x:TypeArguments="x:String">
-                      <Literal x:TypeArguments="x:String" Value="" />
-                    </InArgument>
+                    <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Customer Name").ToString.ToUpper]</InArgument>
                   </Assign.Value>
                 </Assign>
               </Sequence>
             </If.Then>
             <If.Else>
-              <Sequence sap:VirtualizedContainerService.HintSize="482,290" sap2010:WorkflowViewState.IdRef="Sequence_26">
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_86">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign DisplayName="Assign strDateInDate" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_31">
+              </Sequence>
+            </If.Else>
+          </If>
+          <If Condition="[out_dtFinalData.Rows(0)(&quot;Haulier&quot;).ToString.Trim.Length &gt; 0]" DisplayName="Haulier Populated?" sap:VirtualizedContainerService.HintSize="1092,368.8" sap2010:WorkflowViewState.IdRef="If_42">
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="482,176.8" sap2010:WorkflowViewState.IdRef="Sequence_87">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="Uppercase Customer Name" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_100">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Haulier")]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Haulier").ToString.ToUpper]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_88">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Sequence>
+            </If.Else>
+          </If>
+          <If Condition="[out_dtFinalData.Rows(0)(&quot;Vehicle&quot;).ToString.Trim.Length &gt; 0]" DisplayName="Vehicle Reg Populated?" sap:VirtualizedContainerService.HintSize="1092,784" sap2010:WorkflowViewState.IdRef="If_26">
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="1056.4,592" sap2010:WorkflowViewState.IdRef="Sequence_51">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="strReg" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="Assign - extract reg" sap:VirtualizedContainerService.HintSize="1008.4,82.4" sap2010:WorkflowViewState.IdRef="Assign_119">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[strReg]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(out_dtFinalData.Rows(0)("Vehicle").ToString.ToUpper,"([a-zA-Z]{1}\s?[0-9]{2}\s?[a-zA-Z]{3})|([a-zA-Z]{2}\s?[0-9]{2}\s?[a-zA-Z]{3})|([a-zA-Z]\s?[0-9]{1,3}\s?[a-zA-Z]{3})|([a-zA-Z]{3}\s?[0-9]{1,3}\s?[a-zA-Z])|([0-9]{1,4}\s?[a-zA-Z]{1,2})|([0-9]{1,3}\s?[a-zA-Z]{1,3})|([a-zA-Z]{1,2}\s?[0-9]{1,4})|([a-zA-Z]{1,3}\s?[0-9]{1,3})").Value.Replace(" ","")]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <If Condition="[string.IsNullOrWhiteSpace(strReg)]" DisplayName="If - empty extraction?" sap:VirtualizedContainerService.HintSize="1008.4,383.2" sap2010:WorkflowViewState.IdRef="If_50">
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="482,221.6" sap2010:WorkflowViewState.IdRef="Sequence_103">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap2010:Annotation.AnnotationText="The vehicle reg fields can contain superfluous information, so we are only interested in extracting the Vehicle Reg." DisplayName="no value extracted leave original" sap:VirtualizedContainerService.HintSize="434,127.2" sap2010:WorkflowViewState.IdRef="Assign_120">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Vehicle")]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Vehicle").ToString.ToUpper.Replace(" ","")]</InArgument>
+                        </Assign.Value>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Assign>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap:VirtualizedContainerService.HintSize="482,221.6" sap2010:WorkflowViewState.IdRef="Sequence_104">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap2010:Annotation.AnnotationText="The vehicle reg fields can contain superfluous information, so we are only interested in extracting the Vehicle Reg." DisplayName="Extract Vehicle Reg" sap:VirtualizedContainerService.HintSize="434,127.2" sap2010:WorkflowViewState.IdRef="Assign_57">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Vehicle")]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">[strReg]</InArgument>
+                        </Assign.Value>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Assign>
+                    </Sequence>
+                  </If.Else>
+                </If>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_52">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Sequence>
+            </If.Else>
+          </If>
+          <If Condition="[out_dtFinalData.Rows(0)(&quot;Customer Address&quot;).ToString.Trim.Length &gt; 0]" DisplayName="Customer Address Populated?" sap:VirtualizedContainerService.HintSize="1092,884" sap2010:WorkflowViewState.IdRef="If_27">
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="565.6,692" sap2010:WorkflowViewState.IdRef="Sequence_50">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="strFoundPostcode" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="Uppercase Text" sap:VirtualizedContainerService.HintSize="517.6,82.4" sap2010:WorkflowViewState.IdRef="Assign_58">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Customer Address")]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Customer Address").ToString.ToUpper]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Find Postcode" sap:VirtualizedContainerService.HintSize="517.6,82.4" sap2010:WorkflowViewState.IdRef="Assign_59">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[strFoundPostcode]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(out_dtFinalData.Rows(0)("Customer Address").ToString, "([a-zA-Z]{1,2}\d{1,2}[a-zA-Z]{0,2})\s*?(\d[a-zA-Z]{2})").Value]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <If Condition="[NOT(String.IsNullOrEmpty(strFoundPostcode))]" DisplayName="Found Postcode?" sap:VirtualizedContainerService.HintSize="517.6,368.8" sap2010:WorkflowViewState.IdRef="If_25">
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="482,176.8" sap2010:WorkflowViewState.IdRef="Sequence_53">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign DisplayName="Format Postcode" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_60">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Customer Address")]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Customer Address").ToString.Replace(strFoundPostcode, strFoundPostcode.Replace(" ",""))]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_54">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Sequence>
+                  </If.Else>
+                </If>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_55">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Sequence>
+            </If.Else>
+          </If>
+          <If Condition="[String.IsNullOrWhiteSpace(out_dtFinalData.Rows(0)(&quot;Date In&quot;).ToString)]" DisplayName="Date In Populated?" sap:VirtualizedContainerService.HintSize="1008.4,452.8" sap2010:WorkflowViewState.IdRef="If_10">
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="482,291.2" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="Assign strDateInDate" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_25">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[strDateInDate]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[Nothing]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign strDateInTime" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_26">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[strDateInTime]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[Nothing]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap:VirtualizedContainerService.HintSize="482,291.2" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="Assign strDateInDate" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_31">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[strDateInDate]</OutArgument>
                   </Assign.To>
@@ -748,7 +1271,7 @@
                     <InArgument x:TypeArguments="x:String">[Regex.Match(out_dtFinalData.Rows(0)("Date In").ToString, "\w{2}\/\w{2}\/\w{4}").Value]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign DisplayName="Assign strDateInTime" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_32">
+                <Assign DisplayName="Assign strDateInTime" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_32">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[strDateInTime]</OutArgument>
                   </Assign.To>
@@ -759,44 +1282,40 @@
               </Sequence>
             </If.Else>
           </If>
-          <If Condition="[String.IsNullOrWhiteSpace(out_dtFinalData.Rows(0)(&quot;Date Out&quot;).ToString)]" DisplayName="Date Out Populated?" sap:VirtualizedContainerService.HintSize="1009,450" sap2010:WorkflowViewState.IdRef="If_11">
+          <If Condition="[String.IsNullOrWhiteSpace(out_dtFinalData.Rows(0)(&quot;Date Out&quot;).ToString)]" DisplayName="Date Out Populated?" sap:VirtualizedContainerService.HintSize="1008.4,452.8" sap2010:WorkflowViewState.IdRef="If_11">
             <If.Then>
-              <Sequence sap:VirtualizedContainerService.HintSize="482,290" sap2010:WorkflowViewState.IdRef="Sequence_29">
+              <Sequence sap:VirtualizedContainerService.HintSize="482,291.2" sap2010:WorkflowViewState.IdRef="Sequence_29">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign DisplayName="Assign strDateOutDate" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_39">
+                <Assign DisplayName="Assign strDateOutDate" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_39">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[strDateOutDate]</OutArgument>
                   </Assign.To>
                   <Assign.Value>
-                    <InArgument x:TypeArguments="x:String">
-                      <Literal x:TypeArguments="x:String" Value="" />
-                    </InArgument>
+                    <InArgument x:TypeArguments="x:String">[Nothing]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign DisplayName="Assign strDateOutTime" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_40">
+                <Assign DisplayName="Assign strDateOutTime" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_40">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[strDateOutTime]</OutArgument>
                   </Assign.To>
                   <Assign.Value>
-                    <InArgument x:TypeArguments="x:String">
-                      <Literal x:TypeArguments="x:String" Value="" />
-                    </InArgument>
+                    <InArgument x:TypeArguments="x:String">[Nothing]</InArgument>
                   </Assign.Value>
                 </Assign>
               </Sequence>
             </If.Then>
             <If.Else>
-              <Sequence sap:VirtualizedContainerService.HintSize="482,290" sap2010:WorkflowViewState.IdRef="Sequence_30">
+              <Sequence sap:VirtualizedContainerService.HintSize="482,291.2" sap2010:WorkflowViewState.IdRef="Sequence_30">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign DisplayName="Assign strDateOutDate" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_41">
+                <Assign DisplayName="Assign strDateOutDate" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_41">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[strDateOutDate]</OutArgument>
                   </Assign.To>
@@ -804,7 +1323,7 @@
                     <InArgument x:TypeArguments="x:String">[Regex.Match(out_dtFinalData.Rows(0)("Date Out").ToString, "\w{2}\/\w{2}\/\w{4}").Value]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign DisplayName="Assign strDateOutTime" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_42">
+                <Assign DisplayName="Assign strDateOutTime" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_42">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[strDateOutTime]</OutArgument>
                   </Assign.To>
@@ -815,10 +1334,10 @@
               </Sequence>
             </If.Else>
           </If>
-          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Date In (Date)" DataTable="[out_dtFinalData]" DefaultValue="[strDateInDate]" DisplayName="Populate Date In (Date)" sap:VirtualizedContainerService.HintSize="1009,186" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_4" />
-          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Date In (Time)" DataTable="[out_dtFinalData]" DefaultValue="[strDateInTime]" DisplayName="Populate Date In (Time)" sap:VirtualizedContainerService.HintSize="1009,186" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_5" />
-          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Date Out (Date)" DataTable="[out_dtFinalData]" DefaultValue="[strDateOutDate]" DisplayName="Populate Date Out (Date)" sap:VirtualizedContainerService.HintSize="1009,186" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_6" />
-          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Date Out (Time)" DataTable="[out_dtFinalData]" DefaultValue="[strDateOutTime]" DisplayName="Populate Date Out (Time)" sap:VirtualizedContainerService.HintSize="1009,186" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_7">
+          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Date In (Date)" DataTable="[out_dtFinalData]" DefaultValue="[strDateInDate]" DisplayName="Populate Date In (Date)" sap:VirtualizedContainerService.HintSize="1008.4,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_4" />
+          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Date In (Time)" DataTable="[out_dtFinalData]" DefaultValue="[strDateInTime]" DisplayName="Populate Date In (Time)" sap:VirtualizedContainerService.HintSize="1008.4,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_5" />
+          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Date Out (Date)" DataTable="[out_dtFinalData]" DefaultValue="[strDateOutDate]" DisplayName="Populate Date Out (Date)" sap:VirtualizedContainerService.HintSize="1008.4,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_6" />
+          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Date Out (Time)" DataTable="[out_dtFinalData]" DefaultValue="[strDateOutTime]" DisplayName="Populate Date Out (Time)" sap:VirtualizedContainerService.HintSize="1008.4,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_7">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -826,7 +1345,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:AddDataColumn>
-          <ui:FilterDataTable DataTable="[out_dtFinalData]" DisplayName="Remove Unsplit Columns" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="1009,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[out_dtFinalData]" SelectColumnsMode="Remove">
+          <ui:FilterDataTable DataTable="[out_dtFinalData]" DisplayName="Remove Unsplit Columns" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="1008.4,164" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[out_dtFinalData]" SelectColumnsMode="Remove">
             <ui:FilterDataTable.Filters>
               <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                 <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="LT" />
@@ -851,5 +1370,698 @@
         </Sequence>
       </If.Else>
     </If>
+    <If Condition="[Split(in_Classification.DocumentTypeId, &quot;.&quot;).Last = &quot;NCDDutyOfCare&quot;]" DisplayName="NCD Duty of Care?" sap:VirtualizedContainerService.HintSize="1175.6,5272.4" sap2010:WorkflowViewState.IdRef="If_28">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="1140,5080.4" sap2010:WorkflowViewState.IdRef="Sequence_68">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign DisplayName="Format B1 Full Name" sap:VirtualizedContainerService.HintSize="1092,82.4" sap2010:WorkflowViewState.IdRef="Assign_73">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("B1 Full Name (Section B)")]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("B1 Full Name (Section B)").ToString.ToUpper]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Format C1 Full Name" sap:VirtualizedContainerService.HintSize="1092,82.4" sap2010:WorkflowViewState.IdRef="Assign_74">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Full Name (Section C)")]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Full Name (Section C)").ToString.ToUpper]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" Unique="{x:Null}" ColumnName="Vehicle Registration Date" DataTable="[out_dtFinalData]" DefaultValue="[Nothing]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="1092,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_9" MaxLength="-1" />
+          <If Condition="[out_dtFinalData.Rows(0)(&quot;Vehicle Registration (Section B)&quot;).ToString.Trim.Length &gt; 0]" DisplayName="Vehicle Reg Populated?" sap:VirtualizedContainerService.HintSize="1092,1044" sap2010:WorkflowViewState.IdRef="If_29">
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="1056.4,852" sap2010:WorkflowViewState.IdRef="Sequence_59">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="strVRegDate" />
+                  <Variable x:TypeArguments="x:String" Name="strReg" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign sap2010:Annotation.AnnotationText="Vehicle Registration Date" DisplayName="Assign - extract date" sap:VirtualizedContainerService.HintSize="1008.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_111">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[strVRegDate]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[regex.Match(out_dtFinalData.Rows(0)("Vehicle Registration (Section B)").ToString,"\b\d{1,2}[/\\.\- ]\d{1,2}[/\\.\- ]\d{2,4}\b").Value]</InArgument>
+                  </Assign.Value>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Assign>
+                <Assign DisplayName="Assign - add V reg date" sap:VirtualizedContainerService.HintSize="1008.4,82.4" sap2010:WorkflowViewState.IdRef="Assign_112">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Vehicle Registration Date")]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Object">[strVRegDate]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign - extract reg" sap:VirtualizedContainerService.HintSize="1008.4,82.4" sap2010:WorkflowViewState.IdRef="Assign_121">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[strReg]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(out_dtFinalData.Rows(0)("Vehicle Registration (Section B)").ToString.ToUpper,"\b(?:[A-Z]\s?\d{2}\s?[A-Z]{3}|[A-Z]{2}\s?\d{2}\s?[A-Z]{3}|[A-Z]\s?\d{1,3}\s?[A-Z]{3}|[A-Z]{3}\s?\d{1,3}\s?[A-Z]|\d{1,4}\s?[A-Z]{1,2}|\d{1,3}\s?[A-Z]{1,3}|[A-Z]{1,2}\s?\d{1,4}|[A-Z]{1,3}\s?\d{1,3}|[A-Z]{2}\s?\d{2}\s?[A-Z]{2}\s?\d)\b").Value.Replace(" ","")]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <If Condition="[string.IsNullOrWhiteSpace(strReg)]" DisplayName="If - expty reg extraction?" sap:VirtualizedContainerService.HintSize="1008.4,383.2" sap2010:WorkflowViewState.IdRef="If_51">
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="482,221.6" sap2010:WorkflowViewState.IdRef="Sequence_105">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap2010:Annotation.AnnotationText="The vehicle reg fields can contain superfluous information, so we are only interested in extracting the Vehicle Reg." DisplayName="format text to upper" sap:VirtualizedContainerService.HintSize="434,127.2" sap2010:WorkflowViewState.IdRef="Assign_122">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Vehicle Registration (Section B)")]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Vehicle Registration (Section B)").ToString.ToUpper.Replace(" ","")]</InArgument>
+                        </Assign.Value>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Assign>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap:VirtualizedContainerService.HintSize="482,221.6" sap2010:WorkflowViewState.IdRef="Sequence_106">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap2010:Annotation.AnnotationText="The vehicle reg fields can contain superfluous information, so we are only interested in extracting the Vehicle Reg." DisplayName="save extraction result" sap:VirtualizedContainerService.HintSize="434,127.2" sap2010:WorkflowViewState.IdRef="Assign_61">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Vehicle Registration (Section B)")]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">[strReg]</InArgument>
+                        </Assign.Value>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Assign>
+                    </Sequence>
+                  </If.Else>
+                </If>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_60">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Sequence>
+            </If.Else>
+          </If>
+          <Assign DisplayName="Format Registration Number (Section B)" sap:VirtualizedContainerService.HintSize="1092,82.4" sap2010:WorkflowViewState.IdRef="Assign_114">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Registration Number (Section B)")]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Registration Number (Section B)").ToString.ToUpper.Replace(" ","")]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Format Company Name and Address (Section B)" sap:VirtualizedContainerService.HintSize="1092,82.4" sap2010:WorkflowViewState.IdRef="Assign_75">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Company Name and Address (Section B)")]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Company Name and Address (Section B)").ToString.ToUpper]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Format Company Postcode (Section B)" sap:VirtualizedContainerService.HintSize="1092,82.4" sap2010:WorkflowViewState.IdRef="Assign_76">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Company Postcode (Section B)")]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Company Postcode (Section B)").ToString.ToUpper.Replace(" ","")]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Format Company Name and Address (Section C)" sap:VirtualizedContainerService.HintSize="517.6,82.4" sap2010:WorkflowViewState.IdRef="Assign_77">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Company Name and Address (Section C)")]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Company Name and Address (Section C)").ToString.ToUpper]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Format Company Postcode (Section C)" sap:VirtualizedContainerService.HintSize="517.6,82.4" sap2010:WorkflowViewState.IdRef="Assign_78">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Company Postcode (Section C)")]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Company Postcode (Section C)").ToString.ToUpper.Replace(" ","")]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Format D1 Address of Transfer" sap:VirtualizedContainerService.HintSize="517.6,82.4" sap2010:WorkflowViewState.IdRef="Assign_79">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("D1 Address of Transfer")]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("D1 Address of Transfer").ToString.ToUpper]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Format D1 Postcode" sap:VirtualizedContainerService.HintSize="1092,82.4" sap2010:WorkflowViewState.IdRef="Assign_80">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("D1 Postcode")]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("D1 Postcode").ToString.ToUpper.Replace(" ","")]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <If Condition="[out_dtFinalData.Rows(0)(&quot;Full Name (Section C)&quot;).ToString.Trim.Length &gt; 0]" DisplayName="Full Name (Section C) Populated?" sap:VirtualizedContainerService.HintSize="1092,483.2" sap2010:WorkflowViewState.IdRef="If_43">
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="482,291.2" sap2010:WorkflowViewState.IdRef="Sequence_89">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="Proper Case Name" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_101">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Full Name (Section C)")]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Object">[System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(out_dtFinalData.Rows(0)("Full Name (Section C)").ToString)]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Uppercase Last Name" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_102">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Full Name (Section C)")]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Full Name (Section C)").ToString.Replace(out_dtFinalData.Rows(0)("Full Name (Section C)").ToString.Split(" "c).Last, out_dtFinalData.Rows(0)("Full Name (Section C)").ToString.Split(" "c).Last.ToUpper)]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_90">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Sequence>
+            </If.Else>
+          </If>
+          <If Condition="[out_dtFinalData.Rows(0)(&quot;Name (Transferor)&quot;).ToString.Trim.Length &gt; 0]" DisplayName="Name (Transferor) Populated?" sap:VirtualizedContainerService.HintSize="517.6,483.2" sap2010:WorkflowViewState.IdRef="If_44">
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="482,291.2" sap2010:WorkflowViewState.IdRef="Sequence_91">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="Proper Case Name" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_103">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Name (Transferor)")]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Object">[System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(out_dtFinalData.Rows(0)("Name (Transferor)").ToString)]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Uppercase Last Name" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_104">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Name (Transferor)")]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Name (Transferor)").ToString.Replace(out_dtFinalData.Rows(0)("Name (Transferor)").ToString.Split(" "c).Last, out_dtFinalData.Rows(0)("Name (Transferor)").ToString.Split(" "c).Last.ToUpper)]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_92">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Sequence>
+            </If.Else>
+          </If>
+          <If Condition="[out_dtFinalData.Rows(0)(&quot;Representing (Transferor)&quot;).ToString.Trim.Length &gt; 0]" DisplayName="Representing (Transferor) Populated?" sap:VirtualizedContainerService.HintSize="517.6,483.2" sap2010:WorkflowViewState.IdRef="If_45">
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="482,291.2" sap2010:WorkflowViewState.IdRef="Sequence_93">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="Proper Case Name" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_105">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Representing (Transferor)")]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Object">[System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(out_dtFinalData.Rows(0)("Representing (Transferor)").ToString)]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Uppercase Last Name" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_106">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Representing (Transferor)")]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Representing (Transferor)").ToString.Replace(out_dtFinalData.Rows(0)("Representing (Transferor)").ToString.Split(" "c).Last, out_dtFinalData.Rows(0)("Representing (Transferor)").ToString.Split(" "c).Last.ToUpper)]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_94">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Sequence>
+            </If.Else>
+          </If>
+          <If Condition="[out_dtFinalData.Rows(0)(&quot;Name (Transferee)&quot;).ToString.Trim.Length &gt; 0]" DisplayName="Name (Transferee) Populated?" sap:VirtualizedContainerService.HintSize="1092,483.2" sap2010:WorkflowViewState.IdRef="If_46">
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="482,291.2" sap2010:WorkflowViewState.IdRef="Sequence_95">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="Proper Case Name" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_107">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Name (Transferee)")]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Object">[System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(out_dtFinalData.Rows(0)("Name (Transferee)").ToString)]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Uppercase Last Name" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_108">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Name (Transferee)")]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Name (Transferee)").ToString.Replace(out_dtFinalData.Rows(0)("Name (Transferee)").ToString.Split(" "c).Last, out_dtFinalData.Rows(0)("Name (Transferee)").ToString.Split(" "c).Last.ToUpper)]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_96">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Sequence>
+            </If.Else>
+          </If>
+          <If Condition="[out_dtFinalData.Rows(0)(&quot;Representing (Transferee)&quot;).ToString.Trim.Length &gt; 0]" DisplayName="Representing (Transferee) Populated?" sap:VirtualizedContainerService.HintSize="517.6,597.6" sap2010:WorkflowViewState.IdRef="If_47">
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="482,405.6" sap2010:WorkflowViewState.IdRef="Sequence_97">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="Proper Case Name" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_109">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Representing (Transferee)")]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Object">[System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(out_dtFinalData.Rows(0)("Representing (Transferee)").ToString)]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Uppercase Last Name" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_110">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Representing (Transferee)")]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Representing (Transferee)").ToString.Replace(out_dtFinalData.Rows(0)("Representing (Transferee)").ToString.Split(" "c).Last, out_dtFinalData.Rows(0)("Representing (Transferee)").ToString.Split(" "c).Last.ToUpper)]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign - remove page 1 of 1" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_113">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Representing (Transferee)")]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Object">[regex.Replace(out_dtFinalData.Rows(0)("Representing (Transferee)").ToString,"(?i)page\s?\d+\s+of\s?\d+","")]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_98">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Sequence>
+            </If.Else>
+          </If>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_69">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
+    <If Condition="[Split(in_Classification.DocumentTypeId, &quot;.&quot;).Last = &quot;KennysSimplified&quot;]" DisplayName="Kennys Simplified?" sap:VirtualizedContainerService.HintSize="1175.6,3498" sap2010:WorkflowViewState.IdRef="If_34">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="1140,3306" sap2010:WorkflowViewState.IdRef="Sequence_72">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence DisplayName="Format Net Weight" sap:VirtualizedContainerService.HintSize="1092,1136.4" sap2010:WorkflowViewState.IdRef="Sequence_80">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If Condition="[out_dtFinalData.Rows(0)(&quot;Net Tonnage&quot;).ToString.Trim.Length &gt; 0]" DisplayName="Net Tonnage Populated?" sap:VirtualizedContainerService.HintSize="601.2,1039.2" sap2010:WorkflowViewState.IdRef="If_39">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="565.6,847.2" sap2010:WorkflowViewState.IdRef="Sequence_81">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="str:MatchCollection" Name="matNumberMatches" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap2010:Annotation.AnnotationText="As the field could contain any values, we extract any variation of numbers." DisplayName="Extract Weights" sap:VirtualizedContainerService.HintSize="517.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_95">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="str:MatchCollection">[matNumberMatches]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="str:MatchCollection">[System.Text.RegularExpressions.Regex.Matches(out_dtFinalData.Rows(0)("Net Tonnage").ToString,"[0-9]+\.?[0-9]*")]</InArgument>
+                    </Assign.Value>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Assign>
+                  <If sap2010:Annotation.AnnotationText="The standard format for weights is:&#xA;&#xA;Gross: xxxx&#xA;Tare: xxxx&#xA;Net: xxxx&#xA;&#xA;We assume that if we don't find three number matches then the text found in this area on the form might not contain the weights in the correct format, so we leave &quot;as is&quot;." Condition="[matNumberMatches.Count = 3]" DisplayName="Three Numbers?" sap:VirtualizedContainerService.HintSize="517.6,607.2" sap2010:WorkflowViewState.IdRef="If_40">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="482,272" sap2010:WorkflowViewState.IdRef="Sequence_83">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap2010:Annotation.AnnotationText="When there are only three number values, we assume these are the Gross, Tare, and Net weights. &#xA;&#xA;Net weight will always be the &quot;middle&quot; value of these, therefore we order the match collection and take value at position 1 (0 based index)" DisplayName="Determine Gross Weight" sap:VirtualizedContainerService.HintSize="434,177.6" sap2010:WorkflowViewState.IdRef="Assign_96">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Net Tonnage")]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Object" xml:space="preserve">[matNumberMatches.Cast(Of System.Text.RegularExpressions.Match)().
+    Select(Function(m) Decimal.Parse(m.Value)).
+    OrderBy(Function(v) v).
+    ElementAt(1)]</InArgument>
+                          </Assign.Value>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Assign>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_84">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_82">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+          <Assign DisplayName="Format Carrier Name" sap:VirtualizedContainerService.HintSize="1092,82.4" sap2010:WorkflowViewState.IdRef="Assign_81">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Carrier Name")]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Carrier Name").ToString.ToUpper]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Format CBD (Other)" sap:VirtualizedContainerService.HintSize="1092,82.4" sap2010:WorkflowViewState.IdRef="Assign_82">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("CBD (Other)")]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("CBD (Other)").ToString.ToUpper]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Format Broker" sap:VirtualizedContainerService.HintSize="1092,82.4" sap2010:WorkflowViewState.IdRef="Assign_90">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Broker")]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Broker").ToString.ToUpper]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <If Condition="[out_dtFinalData.Rows(0)(&quot;Vehicle Reg&quot;).ToString.Trim.Length &gt; 0]" DisplayName="Vehicle Reg Populated?" sap:VirtualizedContainerService.HintSize="1092,784" sap2010:WorkflowViewState.IdRef="If_35">
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="1056.4,592" sap2010:WorkflowViewState.IdRef="Sequence_70">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="strReg" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign sap:VirtualizedContainerService.HintSize="1008.4,82.4" sap2010:WorkflowViewState.IdRef="Assign_115">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[strReg]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(out_dtFinalData.Rows(0)("Vehicle Reg").ToString.ToUpper,"\b(?:[A-Z]\s?\d{2}\s?[A-Z]{3}|[A-Z]{2}\s?\d{2}\s?[A-Z]{3}|[A-Z]\s?\d{1,3}\s?[A-Z]{3}|[A-Z]{3}\s?\d{1,3}\s?[A-Z]|\d{1,4}\s?[A-Z]{1,2}|\d{1,3}\s?[A-Z]{1,3}|[A-Z]{1,2}\s?\d{1,4}|[A-Z]{1,3}\s?\d{1,3}|[A-Z]{2}\s?\d{2}\s?[A-Z]{2}\s?\d)\b").Value.Replace(" ","")]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <If Condition="[string.IsNullOrWhiteSpace(strReg)]" DisplayName="If - empty result" sap:VirtualizedContainerService.HintSize="1008.4,383.2" sap2010:WorkflowViewState.IdRef="If_48">
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="482,221.6" sap2010:WorkflowViewState.IdRef="Sequence_99">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap2010:Annotation.AnnotationText="The vehicle reg fields can contain superfluous information, so we are only interested in extracting the Vehicle Reg." DisplayName="Extract Vehicle Reg" sap:VirtualizedContainerService.HintSize="434,127.2" sap2010:WorkflowViewState.IdRef="Assign_83">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Vehicle Reg")]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Vehicle Reg").ToString.ToUpper.Replace(" ","")]</InArgument>
+                        </Assign.Value>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Assign>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap:VirtualizedContainerService.HintSize="482,221.6" sap2010:WorkflowViewState.IdRef="Sequence_100">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap2010:Annotation.AnnotationText="The vehicle reg fields can contain superfluous information, so we are only interested in extracting the Vehicle Reg." DisplayName="Extract Vehicle Reg" sap:VirtualizedContainerService.HintSize="434,127.2" sap2010:WorkflowViewState.IdRef="Assign_116">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Vehicle Reg")]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">[System.Text.RegularExpressions.Regex.Match(out_dtFinalData.Rows(0)("Vehicle Reg").ToString.ToUpper,"\b(?:[A-Z]\s?\d{2}\s?[A-Z]{3}|[A-Z]{2}\s?\d{2}\s?[A-Z]{3}|[A-Z]\s?\d{1,3}\s?[A-Z]{3}|[A-Z]{3}\s?\d{1,3}\s?[A-Z]|\d{1,4}\s?[A-Z]{1,2}|\d{1,3}\s?[A-Z]{1,3}|[A-Z]{1,2}\s?\d{1,4}|[A-Z]{1,3}\s?\d{1,3}|[A-Z]{2}\s?\d{2}\s?[A-Z]{2}\s?\d)\b").Value.Replace(" ","")]</InArgument>
+                        </Assign.Value>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Assign>
+                    </Sequence>
+                  </If.Else>
+                </If>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_71">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Sequence>
+            </If.Else>
+          </If>
+          <If Condition="[out_dtFinalData.Rows(0)(&quot;Receiving Site Details&quot;).ToString.Trim.Length &gt; 0]" DisplayName="Receiving Site Details Populated?" sap:VirtualizedContainerService.HintSize="1092,884" sap2010:WorkflowViewState.IdRef="If_36">
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="565.6,692" sap2010:WorkflowViewState.IdRef="Sequence_74">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="strFoundPostcode" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="Uppercase Text" sap:VirtualizedContainerService.HintSize="517.6,82.4" sap2010:WorkflowViewState.IdRef="Assign_91">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Receiving Site Details")]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Receiving Site Details").ToString.ToUpper]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Find Postcode" sap:VirtualizedContainerService.HintSize="517.6,82.4" sap2010:WorkflowViewState.IdRef="Assign_92">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[strFoundPostcode]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(out_dtFinalData.Rows(0)("Receiving Site Details").ToString, "([a-zA-Z]{1,2}\d{1,2}[a-zA-Z]{0,2})\s*?(\d[a-zA-Z]{2})").Value]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <If Condition="[NOT(String.IsNullOrEmpty(strFoundPostcode))]" DisplayName="Found Postcode?" sap:VirtualizedContainerService.HintSize="517.6,368.8" sap2010:WorkflowViewState.IdRef="If_37">
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="482,176.8" sap2010:WorkflowViewState.IdRef="Sequence_75">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign DisplayName="Format Postcode" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_93">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Receiving Site Details")]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)("Receiving Site Details").ToString.Replace(strFoundPostcode, strFoundPostcode.Replace(" ",""))]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_76">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Sequence>
+                  </If.Else>
+                </If>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_77">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Sequence>
+            </If.Else>
+          </If>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_73">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:ForEach x:TypeArguments="sd:DataColumn" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="The extraction can pick up leading/trailing whitespace from values. Add a loop to recurse through the columns and perform a trim." DisplayName="For Each Column" sap:VirtualizedContainerService.HintSize="1175.6,348" sap2010:WorkflowViewState.IdRef="ForEach`1_11" Values="[out_dtFinalData.Columns]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="sd:DataColumn">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataColumn" Name="currentColumn" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="482,176.8" sap2010:WorkflowViewState.IdRef="Sequence_31">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign DisplayName="Trim Whitespace" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_43">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)(currentColumn.ColumnName)]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Object">[out_dtFinalData.Rows(0)(currentColumn.ColumnName).ToString.Trim]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEach>
   </Sequence>
 </Activity>

@@ -12,7 +12,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1058,1151</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>838,1177.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SetTransactionStatus___Sequence_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -97,12 +97,12 @@
       <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart sap2010:Annotation.AnnotationText="Set and log the transaction's status along with extra log fields. &#xA;There can be three possible statuses: Success, Business Exception and System Exception.&#xA;&#xA;Business Rule Exception characterizes an irregular situation according to the process's rules and prevents the transaction to be processed. The transaction is not retried in this case, since the result will be the same until the problem that causes the exception is solved.&#xA;For example, it can be considered a BusinessRuleException if a process expects to read an email's attachment, but the sender didn't attach any file. In this case, immediate retries of the transaction will not yield a different result.&#xA;&#xA;On the other hand, system exceptions are characterized by exceptions whose types are different than BusinessRuleException. When this kind of exception happens, the transaction item can be retried after closing and reopening the applications involved in the process. The rationale behind this is that the exception was caused by a problem in the applications, which might be solved by restarting them.&#xA;&#xA;If Orchestrator queues are the source of transactions, the Set Transaction Status activity is used to update the status. In addition, the retry mechanism is also implemented by Orchestrator.&#xA;&#xA;If Orchestrator queues are not used, the status can be set, for example, by writing to a specific column in a spreadsheet. In such cases, the retry mechanism is covered by the framework and the number of retries is defined in the configuration file.&#xA;&#xA;At the end, io_TransactionNumber is incremented, which makes the framework get the next transaction to be processed." DisplayName="Set Transaction Status" sap:VirtualizedContainerService.HintSize="784,1086" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart sap2010:Annotation.AnnotationText="Set and log the transaction's status along with extra log fields. &#xA;There can be three possible statuses: Success, Business Exception and System Exception.&#xA;&#xA;Business Rule Exception characterizes an irregular situation according to the process's rules and prevents the transaction to be processed. The transaction is not retried in this case, since the result will be the same until the problem that causes the exception is solved.&#xA;For example, it can be considered a BusinessRuleException if a process expects to read an email's attachment, but the sender didn't attach any file. In this case, immediate retries of the transaction will not yield a different result.&#xA;&#xA;On the other hand, system exceptions are characterized by exceptions whose types are different than BusinessRuleException. When this kind of exception happens, the transaction item can be retried after closing and reopening the applications involved in the process. The rationale behind this is that the exception was caused by a problem in the applications, which might be solved by restarting them.&#xA;&#xA;If Orchestrator queues are the source of transactions, the Set Transaction Status activity is used to update the status. In addition, the retry mechanism is also implemented by Orchestrator.&#xA;&#xA;If Orchestrator queues are not used, the status can be set, for example, by writing to a specific column in a spreadsheet. In such cases, the retry mechanism is covered by the framework and the number of retries is defined in the configuration file.&#xA;&#xA;At the end, io_TransactionNumber is incremented, which makes the framework get the next transaction to be processed." DisplayName="Set Transaction Status" sap:VirtualizedContainerService.HintSize="784,1112" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
-        <av:Size x:Key="ShapeSize">60,75</av:Size>
+        <av:Size x:Key="ShapeSize">60,75.2</av:Size>
         <x:Double x:Key="Width">750</x:Double>
         <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,127.5</av:PointCollection>
         <x:Double x:Key="Height">751.6</x:Double>
@@ -116,11 +116,11 @@
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">70,426</av:Point>
-          <av:Size x:Key="ShapeSize">200,169</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">170,595 170,677</av:PointCollection>
+          <av:Size x:Key="ShapeSize">200,180</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">170,606 170,677</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence sap2010:Annotation.AnnotationText="If the transaction item is processed without any exception, its status is updated as Successful and the email is moved to the Success subfolder." DisplayName="Success" sap:VirtualizedContainerService.HintSize="200,169" sap2010:WorkflowViewState.IdRef="Sequence_4">
+      <Sequence sap2010:Annotation.AnnotationText="If the transaction item is processed without any exception, its status is updated as Successful and the email is moved to the Success subfolder." DisplayName="Success" sap:VirtualizedContainerService.HintSize="200,180" sap2010:WorkflowViewState.IdRef="Sequence_4">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -171,7 +171,7 @@
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">70,677</av:Point>
-              <av:Size x:Key="ShapeSize">200,67</av:Size>
+              <av:Size x:Key="ShapeSize">200,67.2</av:Size>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <Sequence DisplayName="Increment transaction index and reset retries + consecutive sysex" sap:VirtualizedContainerService.HintSize="200,67" sap2010:WorkflowViewState.IdRef="Sequence_5">
@@ -215,10 +215,10 @@
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">530,427.666666666667</av:Point>
-          <av:Size x:Key="ShapeSize">200,154</av:Size>
+          <av:Size x:Key="ShapeSize">200,163.6</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence sap2010:Annotation.AnnotationText="If a system exception occurs during the process, the transaction item's status is updated as Failed (Exception Type: Application)." DisplayName="System Exception" sap:VirtualizedContainerService.HintSize="498,944" sap2010:WorkflowViewState.IdRef="Sequence_18">
+      <Sequence sap2010:Annotation.AnnotationText="If a system exception occurs during the process, the transaction item's status is updated as Failed (Exception Type: Application)." DisplayName="System Exception" sap:VirtualizedContainerService.HintSize="200,163.6" sap2010:WorkflowViewState.IdRef="Sequence_18">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:Boolean" Name="QueueRetry" />
         </Sequence.Variables>
@@ -294,11 +294,11 @@
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">310,429.333333333333</av:Point>
-          <av:Size x:Key="ShapeSize">200,169</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">410,598.333333333333 410,628.333333333333 170,628.333333333333 170,677</av:PointCollection>
+          <av:Size x:Key="ShapeSize">200,180</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">410,609.333333333333 410,639.333333333333 170,639.333333333333 170,677</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence sap2010:Annotation.AnnotationText="If a BussinessRuleException is thrown during the process, the transaction item's status is updated as Failed (Exception Type: Business).&#xA;" DisplayName="Business Exception" sap:VirtualizedContainerService.HintSize="200,169" sap2010:WorkflowViewState.IdRef="Sequence_21">
+      <Sequence sap2010:Annotation.AnnotationText="If a BussinessRuleException is thrown during the process, the transaction item's status is updated as Failed (Exception Type: Business).&#xA;" DisplayName="Business Exception" sap:VirtualizedContainerService.HintSize="546,914.8" sap2010:WorkflowViewState.IdRef="Sequence_21">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -306,7 +306,7 @@
             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <Sequence sap2010:Annotation.AnnotationText="Includes custom log fields to the log message.&#xA;They are removed after logging to prevent duplicated status messages about a single transaction." DisplayName="Log business exception with additional logging fields" sap:VirtualizedContainerService.HintSize="498,658" sap2010:WorkflowViewState.IdRef="Sequence_20">
+        <Sequence sap2010:Annotation.AnnotationText="Includes custom log fields to the log message.&#xA;They are removed after logging to prevent duplicated status messages about a single transaction." DisplayName="Log business exception with additional logging fields" sap:VirtualizedContainerService.HintSize="498,671.2" sap2010:WorkflowViewState.IdRef="Sequence_20">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -314,14 +314,14 @@
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:AddLogFields DisplayName="Add transaction log fields (Business Exception)" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="AddLogFields_6">
+          <ui:AddLogFields DisplayName="Add transaction log fields (Business Exception)" sap:VirtualizedContainerService.HintSize="450,24.8" sap2010:WorkflowViewState.IdRef="AddLogFields_6">
             <ui:AddLogFields.Fields>
               <InArgument x:TypeArguments="x:String" x:Key="logF_TransactionStatus">BusinessException</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="logF_TransactionNumber">[io_TransactionNumber.ToString]</InArgument>
             </ui:AddLogFields.Fields>
           </ui:AddLogFields>
-          <ui:LogMessage DisplayName="Log Message (Business Exception)" sap:VirtualizedContainerService.HintSize="450,92" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Error" Message="[in_BusinessException.Message]" />
-          <ui:RemoveLogFields DisplayName="Remove transaction log fields (Business Exception)" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="RemoveLogFields_6">
+          <ui:LogMessage DisplayName="Log Message (Business Exception)" sap:VirtualizedContainerService.HintSize="450,94.4" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Error" Message="[in_BusinessException.Message]" />
+          <ui:RemoveLogFields DisplayName="Remove transaction log fields (Business Exception)" sap:VirtualizedContainerService.HintSize="450,24.8" sap2010:WorkflowViewState.IdRef="RemoveLogFields_6">
             <ui:RemoveLogFields.Fields>
               <scg:List x:TypeArguments="InArgument(x:String)" Capacity="8">
                 <InArgument x:TypeArguments="x:String">logF_TransactionStatus</InArgument>
@@ -332,40 +332,57 @@
               </scg:List>
             </ui:RemoveLogFields.Fields>
           </ui:RemoveLogFields>
-          <Sequence sap2010:Annotation.AnnotationText="We don't have a Move Sharepoint File activity, therefore have to Delete and Upload.&#xA;&#xA;The only BRE in the process is for categorisation, therefore we move to &quot;Uncategorised&quot; folder." DisplayName="Move File to Uncategorised" sap:VirtualizedContainerService.HintSize="450,266" sap2010:WorkflowViewState.IdRef="Sequence_23">
+          <Sequence sap2010:Annotation.AnnotationText="We don't have a Move Sharepoint File activity, therefore have to Delete and Upload.&#xA;&#xA;The only BRE in the process is for categorisation, therefore we move to &quot;Uncategorised&quot; folder." DisplayName="Move File to Uncategorised" sap:VirtualizedContainerService.HintSize="450,272.8" sap2010:WorkflowViewState.IdRef="Sequence_23">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ds:Upload_Small_File DisplayName="Upload File to &quot;Manual Review&quot;" sap:VirtualizedContainerService.HintSize="402,25" sap2010:WorkflowViewState.IdRef="Upload_Small_File_2" in_DestinationFilePath="[io_Config(&quot;Manual Review&quot;).ToString+&quot;/Uncategorised/&quot;+in_TransactionItem.Replace(&quot; &quot;,&quot;%20&quot;).Replace(&quot;&amp;&quot;,&quot;%26&quot;)]" in_LocalFilePath="[io_Config(&quot;Local Filepath&quot;).ToString]" in_strBearerToken="[in_secStrBearerToken]" in_strListID="[io_Config(&quot;SPOL List ID&quot;).ToString]" in_strSiteID="[io_Config(&quot;SPOL Site ID&quot;).ToString]" />
-            <ds:Delete_File_or_Folder DisplayName="Delete File from &quot;In Progress&quot;" sap:VirtualizedContainerService.HintSize="402,25" sap2010:WorkflowViewState.IdRef="Delete_File_or_Folder_2" in_SPOLFilePath="[io_Config(&quot;In Progress&quot;).ToString+&quot;/&quot;+in_TransactionItem.Replace(&quot; &quot;,&quot;%20&quot;).Replace(&quot;&amp;&quot;,&quot;%26&quot;)]" in_strBearerToken="[in_secStrBearerToken]" in_strListID="[io_Config(&quot;SPOL List ID&quot;).ToString]" in_strSiteID="[io_Config(&quot;SPOL Site ID&quot;).ToString]" />
+            <ds:Upload_Small_File DisplayName="Upload File to &quot;Manual Review&quot;" sap:VirtualizedContainerService.HintSize="402,24.8" sap2010:WorkflowViewState.IdRef="Upload_Small_File_2" in_DestinationFilePath="[io_Config(&quot;Manual Review&quot;).ToString+&quot;/Uncategorised/&quot;+in_TransactionItem.Replace(&quot; &quot;,&quot;%20&quot;).Replace(&quot;&amp;&quot;,&quot;%26&quot;)]" in_LocalFilePath="[io_Config(&quot;Local Filepath&quot;).ToString]" in_strBearerToken="[in_secStrBearerToken]" in_strListID="[io_Config(&quot;SPOL List ID&quot;).ToString]" in_strSiteID="[io_Config(&quot;SPOL Site ID&quot;).ToString]" />
+            <ds:Delete_File_or_Folder DisplayName="Delete File from &quot;In Progress&quot;" sap:VirtualizedContainerService.HintSize="402,24.8" sap2010:WorkflowViewState.IdRef="Delete_File_or_Folder_2" in_SPOLFilePath="[io_Config(&quot;In Progress&quot;).ToString+&quot;/&quot;+in_TransactionItem.Replace(&quot; &quot;,&quot;%20&quot;).Replace(&quot;&amp;&quot;,&quot;%26&quot;)]" in_strBearerToken="[in_secStrBearerToken]" in_strListID="[io_Config(&quot;SPOL List ID&quot;).ToString]" in_strSiteID="[io_Config(&quot;SPOL Site ID&quot;).ToString]" />
           </Sequence>
         </Sequence>
-        <p:Generic_PopUp OUT_ProcessType="{x:Null}" OUT_strButtonSelected="{x:Null}" DisplayName="Business Exception Form" sap:VirtualizedContainerService.HintSize="498,25" IN_CSS_filepath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\Exception.css&quot;]" IN_ErrorMessage="The stop button was pressed" IN_PopupMessage="[&quot;&lt;h1&gt;Business Exception Encountered&lt;/h1&gt;&lt;P&gt;A Business Exception has occured during processing of '&quot;+in_BusinessException.Source+&quot;'.&lt;BR&gt;&lt;BR&gt; Error Message: &quot;+in_BusinessException.Message+&quot;&lt;BR&gt;&lt;BR&gt;More details can be found within: &quot;+in_strWorkLogFilepath+&quot;&lt;/P&gt;&lt;BR&gt;&quot;]" IN_PopupTitle="Department for Environment, Food and Rural Affairs" IN_WidthHeight="[{850,450}]" sap2010:WorkflowViewState.IdRef="Generic_PopUp_1" />
+        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="498,53.2" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+          <ui:CommentOut.Body>
+            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="546,119.2" sap2010:WorkflowViewState.IdRef="Sequence_25">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <p:Generic_PopUp OUT_ProcessType="{x:Null}" OUT_strButtonSelected="{x:Null}" DisplayName="Business Exception Form" sap:VirtualizedContainerService.HintSize="498,24.8" IN_CSS_filepath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\Exception.css&quot;]" IN_ErrorMessage="The stop button was pressed" IN_PopupMessage="[&quot;&lt;h1&gt;Business Exception Encountered&lt;/h1&gt;&lt;P&gt;A Business Exception has occured during processing of '&quot;+in_BusinessException.Source+&quot;'.&lt;BR&gt;&lt;BR&gt; Error Message: &quot;+in_BusinessException.Message+&quot;&lt;BR&gt;&lt;BR&gt;More details can be found within: &quot;+in_strWorkLogFilepath+&quot;&lt;/P&gt;&lt;BR&gt;&quot;]" IN_PopupTitle="Department for Environment, Food and Rural Affairs" IN_WidthHeight="[{850,450}]" sap2010:WorkflowViewState.IdRef="Generic_PopUp_1" />
+            </Sequence>
+          </ui:CommentOut.Body>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:CommentOut>
       </Sequence>
       <FlowStep.Next>
         <x:Reference>__ReferenceID0</x:Reference>
       </FlowStep.Next>
     </FlowStep>
-    <FlowDecision x:Name="__ReferenceID4" Condition="[in_BusinessException isnot Nothing]" DisplayName="Business Exception" sap:VirtualizedContainerService.HintSize="105,87" sap2010:WorkflowViewState.IdRef="FlowDecision_3" True="{x:Reference __ReferenceID1}" False="{x:Reference __ReferenceID2}">
+    <FlowDecision x:Name="__ReferenceID4" Condition="[in_BusinessException isnot Nothing]" DisplayName="Business Exception" sap:VirtualizedContainerService.HintSize="106,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_3" True="{x:Reference __ReferenceID1}" False="{x:Reference __ReferenceID2}">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <av:Point x:Key="ShapeLocation">468,226.4</av:Point>
-          <av:Size x:Key="ShapeSize">105,87</av:Size>
+          <av:Size x:Key="ShapeSize">106,87.2</av:Size>
           <av:PointCollection x:Key="TrueConnector">468,269.9 410,269.9 410,429.333333333333</av:PointCollection>
           <av:PointCollection x:Key="FalseConnector">574,269.9 630,269.9 630,427.666666666667</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </FlowDecision>
-    <FlowDecision x:Name="__ReferenceID5" Condition="[in_BusinessException is Nothing and in_SystemException is Nothing]" DisplayName="Success" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowDecision_4" True="{x:Reference __ReferenceID3}" False="{x:Reference __ReferenceID4}">
+    <FlowDecision x:Name="__ReferenceID5" Condition="[in_BusinessException is Nothing and in_SystemException is Nothing]" DisplayName="Success" sap:VirtualizedContainerService.HintSize="70,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_4" True="{x:Reference __ReferenceID3}" False="{x:Reference __ReferenceID4}">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <av:Point x:Key="ShapeLocation">265,127.5</av:Point>
-          <av:Size x:Key="ShapeSize">70,87</av:Size>
+          <av:Size x:Key="ShapeSize">70,87.2</av:Size>
           <av:PointCollection x:Key="FalseConnector">335,171 521,171 521,226.4</av:PointCollection>
           <av:PointCollection x:Key="TrueConnector">265,171 170,171 170,426</av:PointCollection>
         </scg:Dictionary>
