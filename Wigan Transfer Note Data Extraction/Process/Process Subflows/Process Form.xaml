@@ -1239,6 +1239,23 @@
                                                 </ActivityAction>
                                               </ueab:ExcelProcessScopeX.Body>
                                             </ueab:ExcelProcessScopeX>
+                                            <ui:RetryScope DisplayName="Retry Scope - upload results file" sap:VirtualizedContainerService.HintSize="924.4,296.8" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="5" RetryInterval="00:00:05">
+                                              <ui:RetryScope.ActivityBody>
+                                                <ActivityAction>
+                                                  <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,119.2" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <ds:Upload_Small_File out_strDriveItemID="{x:Null}" DisplayName="Upload File to &quot;Results&quot;" sap:VirtualizedContainerService.HintSize="368,24.8" sap2010:WorkflowViewState.IdRef="Upload_Small_File_2" in_DestinationFilePath="[io_Config(&quot;Results&quot;).ToString+&quot;/&quot;+strDocumentType+&quot;.xlsx&quot;]" in_LocalFilePath="[io_Config(&quot;Local Processing Folder&quot;).ToString+&quot;\&quot;+strDocumentType+&quot;.xlsx&quot;]" in_strBearerToken="[in_secStrBearerToken]" in_strListID="[io_Config(&quot;SPOL List ID&quot;).ToString]" in_strSiteID="[io_Config(&quot;SPOL Site ID&quot;).ToString]" />
+                                                  </Sequence>
+                                                </ActivityAction>
+                                              </ui:RetryScope.ActivityBody>
+                                              <ui:RetryScope.Condition>
+                                                <ActivityFunc x:TypeArguments="x:Boolean" />
+                                              </ui:RetryScope.Condition>
+                                            </ui:RetryScope>
                                             <Sequence DisplayName="Check if Major Version Publish Required" sap:VirtualizedContainerService.HintSize="924.4,806.8" sap2010:WorkflowViewState.IdRef="Sequence_33">
                                               <Sequence.Variables>
                                                 <Variable x:TypeArguments="x:Int32" Name="intCurrentMinorVersion" />
@@ -1322,23 +1339,6 @@
                                                 </If.Else>
                                               </If>
                                             </Sequence>
-                                            <ui:RetryScope DisplayName="Retry Scope - upload results file" sap:VirtualizedContainerService.HintSize="924.4,296.8" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="5" RetryInterval="00:00:05">
-                                              <ui:RetryScope.ActivityBody>
-                                                <ActivityAction>
-                                                  <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,119.2" sap2010:WorkflowViewState.IdRef="Sequence_46">
-                                                    <sap:WorkflowViewStateService.ViewState>
-                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                      </scg:Dictionary>
-                                                    </sap:WorkflowViewStateService.ViewState>
-                                                    <ds:Upload_Small_File out_strDriveItemID="{x:Null}" DisplayName="Upload File to &quot;Results&quot;" sap:VirtualizedContainerService.HintSize="368,24.8" sap2010:WorkflowViewState.IdRef="Upload_Small_File_2" in_DestinationFilePath="[io_Config(&quot;Results&quot;).ToString+&quot;/&quot;+strDocumentType+&quot;.xlsx&quot;]" in_LocalFilePath="[io_Config(&quot;Local Processing Folder&quot;).ToString+&quot;\&quot;+strDocumentType+&quot;.xlsx&quot;]" in_strBearerToken="[in_secStrBearerToken]" in_strListID="[io_Config(&quot;SPOL List ID&quot;).ToString]" in_strSiteID="[io_Config(&quot;SPOL Site ID&quot;).ToString]" />
-                                                  </Sequence>
-                                                </ActivityAction>
-                                              </ui:RetryScope.ActivityBody>
-                                              <ui:RetryScope.Condition>
-                                                <ActivityFunc x:TypeArguments="x:Boolean" />
-                                              </ui:RetryScope.Condition>
-                                            </ui:RetryScope>
                                           </Sequence>
                                         </FlowStep>
                                       </FlowStep.Next>
